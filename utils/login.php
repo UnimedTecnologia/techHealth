@@ -39,12 +39,19 @@ if ($row) {
     
     // Verificar se a senha fornecida corresponde à senha armazenada
     if (password_verify($password, $storedPassword)) {
-        // Senha correta, login bem-sucedido
-        $_SESSION['usuario']   = $row['USUARIO'];
-        $_SESSION['idusuario'] = $row['ID'];
-        $_SESSION['nomeuser']  = $row['NOME'];
-        $_SESSION['adm']       = $row['ADM'];
-
+        //* Verifica se esta ativo
+        if($row['ATIVO'] === 'S'){
+            // Senha correta, login bem-sucedido
+            $_SESSION['usuario']   = $row['USUARIO'];
+            $_SESSION['idusuario'] = $row['ID'];
+            $_SESSION['nomeuser']  = $row['NOME'];
+            $_SESSION['adm']       = $row['ADM'];
+        }else{
+            $_SESSION['erroLogin'] = 'Usuário está desativado!';
+            header("Location: ../index.php");
+            exit();
+        }
+       
         if($password === 'unimed'){
             //!PRIMEIRO ACESSO - solicitar alteração de senha
             $_SESSION['primeiroAcessoTH'] = true;

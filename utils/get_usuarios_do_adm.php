@@ -22,7 +22,7 @@ try {
     oci_set_client_identifier($conn, 'UTF-8'); 
 
     // Primeiro SELECT
-    $sql1 = "SELECT id, nome, usuario, adm FROM gp.th_usuario WHERE idadm = :idusuario";
+    $sql1 = "SELECT id, nome, usuario, adm FROM gp.th_usuario WHERE ativo = 'S' AND idadm = :idusuario";
 
     // Preparar a consulta
     $stmt1 = oci_parse($conn, $sql1);

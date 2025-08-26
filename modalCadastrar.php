@@ -65,19 +65,11 @@
                         <form id="formEditar" action="utils/editar_permissoes_usuario.php" method="POST">
                             <div class="card mb-3 mt-3">
                                 <!-- //* Nav Tabs Atualizar 1 por 1 ou todos-->
-                                <!-- <ul class="nav nav-tabs" id="tabSelecao" role="tablist">
-                                    <li class="nav-item" role="presentation">
-                                        <button class="nav-link active" id="tabUnico" data-bs-toggle="tab" data-bs-target="#unico" type="button" role="tab" aria-controls="unico" aria-selected="true">Unico</button>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                        <button class="nav-link" id="tabTodos" data-bs-toggle="tab" data-bs-target="#todos" type="button" role="tab" aria-controls="todos" aria-selected="false">Todos</button>
-                                    </li>
-                                </ul> -->
                                 <div class="card-header ">
                                     <!-- <input type="checkbox" id="allUsuarios" class=" cursor-pointer" onchange="toggleCheckUsuario()"> -->
                                     <span class="form-check-label fw-bold cursor-pointer">Usuários</span>
                                 </div>
-                                <div id="listaUsuarios" class="card-body" style="height: 100px; overflow:auto">
+                                <div id="listaUsuarios" class="card-body" style="height: 200px; overflow:auto">
                                     <!-- //! carrega todos os usuarios dinamicamente -->
                                 </div>
                             </div>
@@ -117,6 +109,7 @@
                     }
                 ?>
                 </div>
+               
             </div>
         </div>
     </div>
