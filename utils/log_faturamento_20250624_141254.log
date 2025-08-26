@@ -1,0 +1,3169 @@
+Atualizado prestador 14551 - RECID M: 8568151 / RECID HP: 10325625
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8568533 / RECID HP: 10326018
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8569928 / RECID HP: 10327555
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8570077 / RECID HP: 10327704
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8571762 / RECID HP: 10329463
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8571809 / RECID HP: 10329514
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8572759 / RECID HP: 10330519
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8572981 / RECID HP: 10330743
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8560520 / RECID HP: 10317626
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8562683 / RECID HP: 10319880
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8562684 / RECID HP: 10319881
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8567849 / RECID HP: 10325317
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8570029 / RECID HP: 10327656
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8571810 / RECID HP: 10329515
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8572050 / RECID HP: 10329762
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8570061 / RECID HP: 10327688
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8571763 / RECID HP: 10329464
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8562604 / RECID HP: 10319789
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8567149 / RECID HP: 10324591
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8567850 / RECID HP: 10325318
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8570031 / RECID HP: 10327658
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8571808 / RECID HP: 10329513
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8562941 / RECID HP: 10320174
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8566144 / RECID HP: 10323504
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8570030 / RECID HP: 10327657
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8570076 / RECID HP: 10327703
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8570441 / RECID HP: 10328069
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8562655 / RECID HP: 10319847
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8569521 / RECID HP: 10327051
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8570060 / RECID HP: 10327687
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8571811 / RECID HP: 10329516
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8572761 / RECID HP: 10330521
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8567150 / RECID HP: 10324592
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8570032 / RECID HP: 10327659
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8570078 / RECID HP: 10327705
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8570091 / RECID HP: 10327718
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8570446 / RECID HP: 10328074
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8571770 / RECID HP: 10329471
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8572760 / RECID HP: 10330520
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8560521 / RECID HP: 10317627
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8562687 / RECID HP: 10319884
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8568159 / RECID HP: 10325633
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14551 - RECID M: 8568520 / RECID HP: 10326004
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8565702 / RECID HP: 10323047
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8565707 / RECID HP: 10323052
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8565710 / RECID HP: 10323055
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8566902 / RECID HP: 10324300
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8566910 / RECID HP: 10324308
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8572038 / RECID HP: 10329748
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8565705 / RECID HP: 10323050
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8566908 / RECID HP: 10324306
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8570296 / RECID HP: 10327923
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8570529 / RECID HP: 10328180
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8570959 / RECID HP: 10328630
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8570961 / RECID HP: 10328632
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8570974 / RECID HP: 10328645
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8572036 / RECID HP: 10329746
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8572037 / RECID HP: 10329747
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8565703 / RECID HP: 10323048
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8566904 / RECID HP: 10324302
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8570528 / RECID HP: 10328179
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8570958 / RECID HP: 10328629
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8570967 / RECID HP: 10328638
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8570968 / RECID HP: 10328639
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8570983 / RECID HP: 10328654
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8572029 / RECID HP: 10329739
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8572031 / RECID HP: 10329741
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8572039 / RECID HP: 10329749
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8572042 / RECID HP: 10329752
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8570530 / RECID HP: 10328181
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8565706 / RECID HP: 10323051
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8565709 / RECID HP: 10323054
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8565711 / RECID HP: 10323056
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8565713 / RECID HP: 10323058
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8566911 / RECID HP: 10324309
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8566912 / RECID HP: 10324310
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8570960 / RECID HP: 10328631
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8570963 / RECID HP: 10328634
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8570970 / RECID HP: 10328641
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8570972 / RECID HP: 10328643
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8570984 / RECID HP: 10328655
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8572030 / RECID HP: 10329740
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8572035 / RECID HP: 10329745
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8572040 / RECID HP: 10329750
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8572043 / RECID HP: 10329753
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8565712 / RECID HP: 10323057
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8566905 / RECID HP: 10324303
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8566909 / RECID HP: 10324307
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8570971 / RECID HP: 10328642
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8570976 / RECID HP: 10328647
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8572028 / RECID HP: 10329738
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8572032 / RECID HP: 10329742
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8572034 / RECID HP: 10329744
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8565715 / RECID HP: 10323060
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8566898 / RECID HP: 10324296
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8566899 / RECID HP: 10324297
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8566907 / RECID HP: 10324305
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8570527 / RECID HP: 10328178
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8570532 / RECID HP: 10328183
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8570966 / RECID HP: 10328637
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8570969 / RECID HP: 10328640
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8565704 / RECID HP: 10323049
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8566897 / RECID HP: 10324295
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8566901 / RECID HP: 10324299
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8566906 / RECID HP: 10324304
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8570531 / RECID HP: 10328182
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8570962 / RECID HP: 10328633
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8570964 / RECID HP: 10328635
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8570973 / RECID HP: 10328644
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8570975 / RECID HP: 10328646
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8570977 / RECID HP: 10328648
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8572041 / RECID HP: 10329751
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8565708 / RECID HP: 10323053
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8565714 / RECID HP: 10323059
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8566900 / RECID HP: 10324298
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8566903 / RECID HP: 10324301
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8570965 / RECID HP: 10328636
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14552 - RECID M: 8572033 / RECID HP: 10329743
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14553 - RECID M: 8562524 / RECID HP: 10319702
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14553 - RECID M: 8566941 / RECID HP: 10324343
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14553 - RECID M: 8569703 / RECID HP: 10327276
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14553 - RECID M: 8573383 / RECID HP: 10331163
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14553 - RECID M: 8567095 / RECID HP: 10324515
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14553 - RECID M: 8566446 / RECID HP: 10323807
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14553 - RECID M: 8567096 / RECID HP: 10324516
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14553 - RECID M: 8567123 / RECID HP: 10324544
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14553 - RECID M: 8568915 / RECID HP: 10326413
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14553 - RECID M: 8563355 / RECID HP: 10320619
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14553 - RECID M: 8564196 / RECID HP: 10321517
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14553 - RECID M: 8566447 / RECID HP: 10323808
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14553 - RECID M: 8566940 / RECID HP: 10324342
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14553 - RECID M: 8569699 / RECID HP: 10327271
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14553 - RECID M: 8569704 / RECID HP: 10327277
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14553 - RECID M: 8569811 / RECID HP: 10327399
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14553 - RECID M: 8567122 / RECID HP: 10324543
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14553 - RECID M: 8567126 / RECID HP: 10324547
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14553 - RECID M: 8568916 / RECID HP: 10326414
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14553 - RECID M: 8569700 / RECID HP: 10327272
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14553 - RECID M: 8569812 / RECID HP: 10327400
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14553 - RECID M: 8563191 / RECID HP: 10320444
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14553 - RECID M: 8567125 / RECID HP: 10324546
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14553 - RECID M: 8573297 / RECID HP: 10331070
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14553 - RECID M: 8573351 / RECID HP: 10331131
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14553 - RECID M: 8573368 / RECID HP: 10331148
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14565 - RECID M: 8562940 / RECID HP: 10320173
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14565 - RECID M: 8563796 / RECID HP: 10321101
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14565 - RECID M: 8568489 / RECID HP: 10325973
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14565 - RECID M: 8568490 / RECID HP: 10325974
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14565 - RECID M: 8573380 / RECID HP: 10331160
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14565 - RECID M: 8562939 / RECID HP: 10320172
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14565 - RECID M: 8565501 / RECID HP: 10322839
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14565 - RECID M: 8569550 / RECID HP: 10327084
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14565 - RECID M: 8572210 / RECID HP: 10329931
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14565 - RECID M: 8562919 / RECID HP: 10320147
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14565 - RECID M: 8565503 / RECID HP: 10322841
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14565 - RECID M: 8568491 / RECID HP: 10325975
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14565 - RECID M: 8572985 / RECID HP: 10330747
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14565 - RECID M: 8573382 / RECID HP: 10331162
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14565 - RECID M: 8562493 / RECID HP: 10319670
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14565 - RECID M: 8563647 / RECID HP: 10320944
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14565 - RECID M: 8564337 / RECID HP: 10321660
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14565 - RECID M: 8565502 / RECID HP: 10322840
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14565 - RECID M: 8562494 / RECID HP: 10319671
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14565 - RECID M: 8563646 / RECID HP: 10320943
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14565 - RECID M: 8563648 / RECID HP: 10320945
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14565 - RECID M: 8568782 / RECID HP: 10326278
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14565 - RECID M: 8572987 / RECID HP: 10330749
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14565 - RECID M: 8573470 / RECID HP: 10331253
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14565 - RECID M: 8573471 / RECID HP: 10331254
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14565 - RECID M: 8572510 / RECID HP: 10330266
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14565 - RECID M: 8573379 / RECID HP: 10331159
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14565 - RECID M: 8564873 / RECID HP: 10322198
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14565 - RECID M: 8565017 / RECID HP: 10322345
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14565 - RECID M: 8569772 / RECID HP: 10327355
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14565 - RECID M: 8572986 / RECID HP: 10330748
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14565 - RECID M: 8565016 / RECID HP: 10322344
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14565 - RECID M: 8569961 / RECID HP: 10327588
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14565 - RECID M: 8573381 / RECID HP: 10331161
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8562198 / RECID HP: 10319367
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8562199 / RECID HP: 10320773
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8566788 / RECID HP: 10324166
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8572379 / RECID HP: 10330115
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8573014 / RECID HP: 10330776
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8573038 / RECID HP: 10330801
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8572554 / RECID HP: 10330314
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8562550 / RECID HP: 10320587
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8565833 / RECID HP: 10323186
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8566789 / RECID HP: 10324167
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8567078 / RECID HP: 10324495
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8572553 / RECID HP: 10330313
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8562198 / RECID HP: 10320772
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8565900 / RECID HP: 10323254
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8566654 / RECID HP: 10330311
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8566841 / RECID HP: 10324222
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8567085 / RECID HP: 10324503
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8569014 / RECID HP: 10326516
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8572377 / RECID HP: 10330113
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8572380 / RECID HP: 10330116
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8573039 / RECID HP: 10330802
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8573067 / RECID HP: 10330830
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8573068 / RECID HP: 10330831
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8566654 / RECID HP: 10324025
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8566763 / RECID HP: 10324140
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8567079 / RECID HP: 10324496
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8569015 / RECID HP: 10326517
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8572097 / RECID HP: 10329813
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8573015 / RECID HP: 10330777
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8566655 / RECID HP: 10324026
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8562199 / RECID HP: 10319368
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8562552 / RECID HP: 10319733
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8562548 / RECID HP: 10319729
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8562551 / RECID HP: 10319732
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8566790 / RECID HP: 10324168
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8572378 / RECID HP: 10330114
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8572889 / RECID HP: 10330650
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8562550 / RECID HP: 10319731
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8562551 / RECID HP: 10320588
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8562552 / RECID HP: 10320589
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8565899 / RECID HP: 10323253
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8566845 / RECID HP: 10324227
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8569016 / RECID HP: 10326518
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8572523 / RECID HP: 10330281
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8566655 / RECID HP: 10330312
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8562548 / RECID HP: 10320590
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8564436 / RECID HP: 10321759
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8564875 / RECID HP: 10322200
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8566844 / RECID HP: 10324226
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8567252 / RECID HP: 10324707
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8572094 / RECID HP: 10329810
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14570 - RECID M: 8566604 / RECID HP: 10323974
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14719 - RECID M: 8562510 / RECID HP: 10319688
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14719 - RECID M: 8563384 / RECID HP: 10320650
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14719 - RECID M: 8563385 / RECID HP: 10320651
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14719 - RECID M: 8568143 / RECID HP: 10325617
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14719 - RECID M: 8568141 / RECID HP: 10325615
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14719 - RECID M: 8568146 / RECID HP: 10325620
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14719 - RECID M: 8568147 / RECID HP: 10325621
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14719 - RECID M: 8568145 / RECID HP: 10325619
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14719 - RECID M: 8562508 / RECID HP: 10319686
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14719 - RECID M: 8562509 / RECID HP: 10319687
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14719 - RECID M: 8563383 / RECID HP: 10320649
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14719 - RECID M: 8568142 / RECID HP: 10325616
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14719 - RECID M: 8568144 / RECID HP: 10325618
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14719 - RECID M: 8562511 / RECID HP: 10319689
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14719 - RECID M: 8563386 / RECID HP: 10320652
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8565024 / RECID HP: 10322352
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8565088 / RECID HP: 10322417
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8565089 / RECID HP: 10322418
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8565092 / RECID HP: 10322421
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8566363 / RECID HP: 10323723
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8566364 / RECID HP: 10323724
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8567199 / RECID HP: 10324648
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8570703 / RECID HP: 10328366
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8571913 / RECID HP: 10329620
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8571918 / RECID HP: 10329625
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8571920 / RECID HP: 10329627
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8572164 / RECID HP: 10329883
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8572167 / RECID HP: 10329886
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8572170 / RECID HP: 10329889
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8573150 / RECID HP: 10330918
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8573301 / RECID HP: 10331077
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8573305 / RECID HP: 10331081
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8573314 / RECID HP: 10331090
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8573315 / RECID HP: 10331091
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8573319 / RECID HP: 10331095
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8573320 / RECID HP: 10331096
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8573321 / RECID HP: 10331097
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8573324 / RECID HP: 10331100
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8573325 / RECID HP: 10331101
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8573333 / RECID HP: 10331109
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8566365 / RECID HP: 10323725
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8566367 / RECID HP: 10323727
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8567192 / RECID HP: 10324641
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8567301 / RECID HP: 10324759
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8570683 / RECID HP: 10328346
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8570687 / RECID HP: 10328350
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8570689 / RECID HP: 10328352
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8570692 / RECID HP: 10328355
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8570696 / RECID HP: 10328359
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8571915 / RECID HP: 10329622
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8571919 / RECID HP: 10329626
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8572152 / RECID HP: 10329871
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8572157 / RECID HP: 10329876
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8572160 / RECID HP: 10329879
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8572166 / RECID HP: 10329885
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8572168 / RECID HP: 10329887
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8572953 / RECID HP: 10330714
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------Atualizado prestador 14856 - RECID M: 8573141 / RECID HP: 10330909
+ 
+            UPDATE GP.MOVIPROC SET 
+                CHAR_4 = :nm_diretor, 
+                CHAR_13 = :char21, 
+                CHAR_14 = :char23, 
+                CHAR_15 = :char22, 
+                CHAR_19 = :charConcat
+            WHERE PROGRESS_RECID = :recidM
+        
+
+ --------------------------------------
