@@ -356,6 +356,8 @@
       <?php include_once "modalProducaoClinicas.php"; ?>
       <?php include_once "modalTrocaPeriodoCooperado.php"; ?>
       <?php include_once "modalDocPendenteLiberacao.php"; ?>
+      <?php include_once "modalTrocaAcomodacao.php"; ?>
+      <?php include_once "modalDadosProfissionalExecutante.php"; ?>
       
 
     <!-- Bootstrap JS -->
