@@ -74,18 +74,30 @@ try {
         [
             'name' => 'ERRO 3016 ANESTESISTA 10104020 10102019 10103015',
             'progresso' => 'erro3013', //* Id do <p>
-            'sql' => "UPDATE GP.MOVIPROC SET LOG_11 = 0 WHERE (CD_PRESTADOR, NR_DOC_ORIGINAL, NR_DOC_SISTEMA, CD_TRANSACAO, NR_SERIE_DOC_ORIGINAL, LOG_11, LG_URGENCIA, LG_ADICIONAL_URGENCIA, QT_REPASSE, QT_REPASSE_COB, NR_PERREF, DT_ANOREF, PROGRESS_RECID) IN (
+             'sql' => "UPDATE GP.MOVIPROC SET LOG_11 = 0 WHERE (CD_PRESTADOR, NR_DOC_ORIGINAL, NR_DOC_SISTEMA, CD_TRANSACAO, NR_SERIE_DOC_ORIGINAL, LOG_11, LG_URGENCIA, LG_ADICIONAL_URGENCIA, QT_REPASSE, QT_REPASSE_COB, NR_PERREF, DT_ANOREF, PROGRESS_RECID) IN (
                     SELECT M.CD_PRESTADOR, M.NR_DOC_ORIGINAL, M.NR_DOC_SISTEMA, M.CD_TRANSACAO, M.NR_SERIE_DOC_ORIGINAL, M.LOG_11, M.LG_URGENCIA, M.LG_ADICIONAL_URGENCIA, M.QT_REPASSE, M.QT_REPASSE_COB, M.NR_PERREF, M.DT_ANOREF, M.PROGRESS_RECID
                         FROM GP.MOVIPROC M
-                        WHERE M.CD_ESP_AMB             = 10
-                            AND M.CD_GRUPO_PROC_AMB      = 10
-                            AND ((M.CD_PROCEDIMENTO      = 402 AND M.DV_PROCEDIMENTO       = 0) 
-                            OR (M.CD_PROCEDIMENTO       = 201 AND M.DV_PROCEDIMENTO       = 9)
-                            OR (M.CD_PROCEDIMENTO       = 301 AND M.DV_PROCEDIMENTO       = 5))
+                        INNER JOIN GP.AMBPROCE A ON A.CD_ESP_AMB          = M.CD_ESP_AMB
+                                                AND A.CD_GRUPO_PROC_AMB   = M.CD_GRUPO_PROC_AMB
+                                                AND A.CD_PROCEDIMENTO     = M.CD_PROCEDIMENTO
+                                                AND A.DV_PROCEDIMENTO     = M.DV_PROCEDIMENTO
+                        WHERE A.CDPROCEDIMENTOCOMPLETO IN (10104020, 10102019, 10103015, 41001095, 40325024, 40403505)
                             AND M.NR_PERREF              IN ( :numRef )
                             AND M.DT_ANOREF              = :anoRef
                             AND M.LOG_11                 = 1
                     )"
+            // 'sql' => "UPDATE GP.MOVIPROC SET LOG_11 = 0 WHERE (CD_PRESTADOR, NR_DOC_ORIGINAL, NR_DOC_SISTEMA, CD_TRANSACAO, NR_SERIE_DOC_ORIGINAL, LOG_11, LG_URGENCIA, LG_ADICIONAL_URGENCIA, QT_REPASSE, QT_REPASSE_COB, NR_PERREF, DT_ANOREF, PROGRESS_RECID) IN (
+            //         SELECT M.CD_PRESTADOR, M.NR_DOC_ORIGINAL, M.NR_DOC_SISTEMA, M.CD_TRANSACAO, M.NR_SERIE_DOC_ORIGINAL, M.LOG_11, M.LG_URGENCIA, M.LG_ADICIONAL_URGENCIA, M.QT_REPASSE, M.QT_REPASSE_COB, M.NR_PERREF, M.DT_ANOREF, M.PROGRESS_RECID
+            //             FROM GP.MOVIPROC M
+            //             WHERE M.CD_ESP_AMB             = 10
+            //                 AND M.CD_GRUPO_PROC_AMB      = 10
+            //                 AND ((M.CD_PROCEDIMENTO      = 402 AND M.DV_PROCEDIMENTO       = 0) 
+            //                 OR (M.CD_PROCEDIMENTO       = 201 AND M.DV_PROCEDIMENTO       = 9)
+            //                 OR (M.CD_PROCEDIMENTO       = 301 AND M.DV_PROCEDIMENTO       = 5))
+            //                 AND M.NR_PERREF              IN ( :numRef )
+            //                 AND M.DT_ANOREF              = :anoRef
+            //                 AND M.LOG_11                 = 1
+            //         )"
         ],
         [
             'name' => 'ERRO CONSULTA 3013 - PROCEDIMENTO 10101012',

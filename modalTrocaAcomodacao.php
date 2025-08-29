@@ -26,7 +26,6 @@
             <div class="modal-body">
                 <div class="tab-content mt-3">
                     <div class="tab-pane fade show active" id="guias11" role="tabpanel" aria-labelledby="primeiro-tab">
-                        <!-- <form id="formTrocaAcomodacao" action="contas_medicas/trocaAcomodacao/updateTrocaAcomodacao.php" method="POST" style="max-width: 600px; margin: 0 auto;"> -->
                         <form id="formTrocaAcomodacao" action="contas_medicas/trocaAcomodacao/consultaAcomodacao.php" method="POST" style="max-width: 600px; margin: 0 auto;">
                             <div class="row justify-content-center" >
    
@@ -115,40 +114,52 @@ async function carregarAcomodacao(formData) {
         if (!response.ok) throw new Error(`Erro HTTP: ${response.status}`);
 
         const data = await response.json();
-
         const container = document.getElementById("resultadoTrocaAcomodacao");
         container.innerHTML = "";
 
-        if (!data.success || data.dado.length === 0) {
+        // Função auxiliar para montar tabela
+        function montarTabela(titulo, dados) {
+            if (!dados || dados.length === 0) return "";
+
+            const colunas = Object.keys(dados[0]);
+            let tabela = `
+                <h5 class="mt-3">${titulo}</h5>
+                <div style="max-height:400px; overflow:auto">
+                    <table class="table table-striped table-bordered mt-2">
+                        <thead>
+                            <tr>${colunas.map(col => `<th>${col}</th>`).join("")}</tr>
+                        </thead>
+                        <tbody>
+            `;
+            dados.forEach(row => {
+                tabela += `<tr>${colunas.map(col => `<td>${row[col]}</td>`).join("")}</tr>`;
+            });
+            tabela += "</tbody></table></div>";
+
+            return tabela;
+        }
+
+        // Montar tabelas
+        let html = "";
+        html += montarTabela("Procedimentos (MOVIPROC)", data.dado_moviproc);
+        html += montarTabela("Insumos (MOV_INSU)", data.dado_movinsu);
+
+        // Caso não venha nada
+        if (!html) {
+            container.innerHTML = "<p>Nenhum registro encontrado.</p>";
             loaderGuia.style.display = "none";
             botaoConsultaDocs.disabled = false;
-            container.innerHTML = "<p>Nenhum registro encontrado.</p>";
             return;
         }
 
-        const colunas = Object.keys(data.dado[0]);
-        let tabela = `<div style="max-height:400px; overflow:auto">
-            <table class="table table-striped table-bordered mt-3">
-                <thead>
-                    <tr>${colunas.map(col => `<th>${col}</th>`).join("")}</tr>
-                </thead>
-                <tbody>
-        `;
-
-        data.dado.forEach(row => {
-            tabela += `<tr>${colunas.map(col => `<td>${row[col]}</td>`).join("")}</tr>`;
-        });
-
-        tabela += "</tbody></table></div>";
-
-        // Botão para executar o update
-        tabela += `
+        // Botão update
+        html += `
             <div class="mt-3">
                 <button id="btnUpdateAcomodacao" class="btn btn-primary">Atualizar Acomodação</button>
             </div>
         `;
 
-        container.innerHTML = tabela;
+        container.innerHTML = html;
 
         // Evento do botão update
         document.getElementById("btnUpdateAcomodacao").addEventListener("click", async () => {
@@ -171,9 +182,13 @@ async function carregarAcomodacao(formData) {
                     carregarAcomodacao(formData);
                 } else {
                     Swal.fire("Erro!", updateData.message || "Falha ao atualizar.", "error");
+                    loaderGuia.style.display = "none";
+                    botaoConsultaDocs.disabled = false;
                 }
             } catch (err) {
                 Swal.fire("Erro!", "Erro ao executar update: " + err.message, "error");
+                loaderGuia.style.display = "none";
+                botaoConsultaDocs.disabled = false;
             }
         });
         
