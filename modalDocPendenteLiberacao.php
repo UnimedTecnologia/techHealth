@@ -126,13 +126,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Cria tabela
             let tabela = `
-                <table class="table table-striped table-bordered mt-3">
+                <table id="tabelaPendenteLibe" class="table table-striped table-bordered mt-3">
                     <thead>
                         <tr>
                             <th>Código Prestador</th>
                             <th>Nome Prestador</th>
                             <th>Pend. Glosa</th>
                             <th>Pend. Liberação</th>
+                            <th>Grupo Prest</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -145,13 +146,46 @@ document.addEventListener("DOMContentLoaded", () => {
                         <td>${row.NM_PRESTADOR}</td>
                         <td>${row.PEND_GLOSA}</td>
                         <td>${row.PEND_LIBERACAO}</td>
+                        <td>${row.CD_GRUPO_PRESTADOR}</td>
                     </tr>
                 `;
             });
 
-            tabela += "</tbody></table>";
+            tabela += `</tbody></table>
+            <div class="mt-3">
+                <button class="btn btn-primary" onclick="imprimirTabela()">Imprimir</button>
+            </div>`;
 
+            // Depois que monta a tabela:
             container.innerHTML = tabela;
+
+            // Pega o botão e adiciona evento
+            document.querySelector("#resultadoDocPend button").addEventListener("click", imprimirTabela);
+
+            function imprimirTabela() {
+                let conteudo = document.getElementById("tabelaPendenteLibe").outerHTML;
+                let janela = window.open("", "", "width=800,height=600");
+                janela.document.write(`
+                    <html>
+                        <head>
+                            <title>Pendente Liberação</title>
+                            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+                        </head>
+                        <body>
+                            ${conteudo}
+                        </body>
+                    </html>
+                `);
+                janela.document.close();
+
+                // Aguarda o carregamento do CSS antes de imprimir
+                janela.onload = () => {
+                    janela.print();
+                    janela.close(); // fecha a janela depois da impressão (opcional)
+                };
+            }
+
+            
         }
 
 
@@ -168,3 +202,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 </script>
+
+
