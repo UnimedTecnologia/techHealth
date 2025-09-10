@@ -84,7 +84,11 @@
                             <div class="text-center mt-5">
                                 <button type="submit" class="btn btn-primary">Salvar Alterações</button>
                             </div>
+                            
                         </form>
+                            <div class="text-center mt-2">
+                                <button id="btnResetSenha"  style="display:none;" class="btn btn-warning"><i class="bi bi-key"></i> Resetar Senha do Usuário</button>
+                            </div>
                     </div>
                 <!-- //! Retorno insert -->
                 <?php

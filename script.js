@@ -772,6 +772,7 @@ $("#listaUsuarios").on("change", "input[type='radio']", function () {
 
     //* Acessa os detalhes de cada usuário selecionado no JSON
     const detalhes = selectedValues.map(id => {
+        document.getElementById("btnResetSenha").style.display = "inline-block";
         return usuariosData.data.detalhes.filter(detalhe => detalhe.IDUSUARIO == id);
     });
 
@@ -780,8 +781,36 @@ $("#listaUsuarios").on("change", "input[type='radio']", function () {
             atualizarCheckboxesTelas(detalhes[i]);
         }
     }
-    
 });
+
+//! RESETAR SENHA DO USUARIO SELECIONADO
+document.getElementById("btnResetSenha").addEventListener("click", async function () {
+    const selectedRadio = document.querySelector("#listaUsuarios input[type='radio']:checked");
+    if (!selectedRadio) {
+        alert("Selecione um usuário primeiro.");
+        return;
+    }
+
+    const userId = selectedRadio.value;
+    const userName = selectedRadio.parentNode.textContent.trim();
+
+    if (confirm("Deseja realmente resetar a senha do usuário: " + userName + "?")) {
+        try {
+            const response = await fetch("reset_senha.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: "id=" + encodeURIComponent(userId)
+            });
+
+            const data = await response.json();
+            alert(data.mensagem);
+        } catch (error) {
+            alert("Erro ao comunicar com o servidor.");
+            console.error(error);
+        }
+    }
+});
+
 
 function LimpaChecks(){
     const checkboxes = document.querySelectorAll("#formPermissoesEditar input[type='checkbox'][name='telas[]']");  

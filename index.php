@@ -162,7 +162,7 @@ if (isset($_SESSION['idusuario']) && !isset($_SESSION['primeiroAcessoTH'])) {
                
             </form>
 
-            <p class="cursor-pointer text-center mt-5">Esqueci a senha</p>
+            <p class="cursor-pointer text-center mt-5">Esqueceu a senha? Solicite ao administrador do setor</p>
 
         </div>
     </div>
