@@ -21,7 +21,7 @@
 </style>
 <!-- Modal Atualiza Faturamento-->
 <div class="modal fade" id="modalAtualizaFaturamento" tabindex="-1" aria-labelledby="modalAtualizaFaturamentoLabel" aria-hidden="true" data-bs-backdrop="static">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalAtualizaFaturamentoLabel">Atualizar Faturamento</h5>
@@ -39,6 +39,11 @@
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="segundo-tab" data-bs-toggle="tab" data-bs-target="#segundo" type="button" role="tab" aria-controls="segundo" aria-selected="false">
                             Faturamento Automático
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="terceiro-tab" data-bs-toggle="tab" data-bs-target="#terceiro" type="button" role="tab" aria-controls="terceiro" aria-selected="false">
+                            Faturamento Manual
                         </button>
                     </li>
                 </ul>
@@ -89,20 +94,66 @@
 
                     <!-- Segunda aba: Faturamento Automatico : (14546,14551,14552,14553,14565,14568,14570,14666,14719,14856,14911,14913,15034,15035,15037,15038,22360,23644,23931,200537,500555,508100,800720,25154) -->
                     <div class="tab-pane fade" id="segundo" role="tabpanel" aria-labelledby="segundo-tab">
-                        <!-- <form id="formSegundo" action="utils/update_faturamentoAutomatico.php/" method="POST"> -->
                         <form id="formSegundo" action="utils/faturamentoAutomatico.php/" method="POST">
-                            <!-- <div class="mb-3 form-floating-label">
-                                <input id="anoFatAuto" type="text" pattern="\d*" class="form-control inputback" name="anoFatAuto" placeholder=" " required>
-                                <label for="anoFatAuto">Ano Referência *</label>
-                            </div>
-
-                            <div class="mb-3 form-floating-label">
-                                <input id="periodoFatAuto" type="text" pattern="\d*" class="form-control inputback" name="periodoFatAuto" placeholder=" " required>
-                                <label for="periodoFatAuto">Número Período Referência *</label>
-                            </div> -->
                             <div class="text-center mt-4">
                                 <button type="submit" class="btn btn-primary">Gerar faturamento automático</button>
                             </div>
+                        </form>
+                    </div>
+                    
+                    <!-- Terceira aba: Faturamento Manual -->
+                    <div class="tab-pane fade" id="terceiro" role="tabpanel" aria-labelledby="terceiro-tab">
+                        <form id="formTerceiro" action="utils/faturamentoManual.php/" method="POST">
+                            <div class="mb-3 form-floating-label">
+                                <input id="cd_prestadorManual" type="text" pattern="\d*" class="form-control inputback" name="cd_prestadorManual" placeholder=" " required>
+                                <label for="cd_prestadorManual">Prestador *</label>
+                            </div>
+                            
+                            <div class="mb-3 form-floating-label">
+                                <input id="nr_docOriginalManual" type="text" pattern="\d*" class="form-control inputback" name="nr_docOriginalManual" placeholder=" " required>
+                                <label for="nr_docOriginalManual">Doc Original *</label>
+                            </div>
+                            
+                            <div class="mb-3 form-floating-label">
+                                <input id="anoFatManual" type="text" pattern="\d*" class="form-control inputback" name="anoFatManual" placeholder=" " required>
+                                <label for="anoFatManual">Ano Referência *</label>
+                            </div>
+
+                            <div class="mb-3 form-floating-label">
+                                <input id="periodoFatManual" type="text" pattern="\d*" class="form-control inputback" name="periodoFatManual" placeholder=" " required>
+                                <label for="periodoFatManual">Número Período Referência *</label>
+                            </div>
+
+                            <div class="mb-3 form-floating-label">
+                                <input id="cdProcedManual" type="text" class="form-control inputback" name="cdProcedManual" placeholder=" " required>
+                                <label for="cdProcedManual">Código procedimentos (separados por vírgula) *</label>
+                            </div>
+                            <div class="text-center mt-4">
+                                <!-- <button type="submit" class="btn btn-primary">Gerar faturamento manual</button> -->
+                                 <button type="submit" class="btn btn-primary" onclick="startUpdatesManual(event)">Gerar faturamento manual</button>
+
+                            </div>
+
+
+                            <div class="text-center mt-2">
+                                <div id="messageManual" style="margin-top: 10px; color: green;"></div>
+
+                                <div class="progress mt-3" style="display:none;" id="progress-container-manual">
+                                    <div id="progress-bar-manual" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%">0%</div>
+                                </div>
+                            </div>
+
+                            <div id="progressoUpdateManual" style="display:none">
+                                <div class="d-flex justify-content-between">
+                                    <p>Atualizar ERRO 3016</p>
+                                    <p id="moviproc" class="progresso colorGray">Aguardando</p>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <p>Atualizar HISTORICO </p>
+                                    <p id="histmoviproc" class="progresso colorGray">Aguardando</p>
+                                </div>
+                            </div>
+
                         </form>
                     </div>
 
@@ -190,7 +241,8 @@
             }
         };
 
-        eventSource.onerror = function() {
+        eventSource.onerror = function(e) {
+            console.log('Recebido:', e.data);
             document.getElementById('messageFat').style.color = 'red';
             document.getElementById('messageFat').textContent = 'Erro na conexão com o servidor';
             eventSource.close();
@@ -273,6 +325,122 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+</script>
 
+
+<!-- //! UPDATES MANUAL -->
+<script>
+function startUpdatesManual(event) {
+    event.preventDefault(); // evita submit normal
+
+    console.log("Iniciando faturamento manual");
+    iniciarProgressoManual();
+
+    // Pega valores do form
+    const form = document.getElementById("formTerceiro");
+    const formData = new FormData(form);
+
+    // Configura UI inicial
+    document.getElementById('messageManual').style.display = 'block';
+    document.getElementById('messageManual').textContent = 'Iniciando atualização...';
+    document.getElementById('progress-container-manual').style.display = 'block';
+    form.querySelector("button[type=submit]").disabled = true;
+
+    // Envia via fetch POST e acompanha via EventSourcePolyfill (SSE + POST)
+    const eventSource = new EventSource("utils/faturamentoManual.php?" + new URLSearchParams(formData));
+
+    eventSource.onmessage = function(e) {
+        console.log("Manual SSE recebido:", e.data);
+        const data = JSON.parse(e.data);
+
+        if (data.error) {
+            document.getElementById('messageManual').style.color = 'red';
+            document.getElementById('messageManual').textContent = 'Erro: ' + data.error;
+            eventSource.close();
+            form.querySelector("button[type=submit]").disabled = false;
+        }
+        else if (data.complete) {
+            document.getElementById('messageManual').textContent = 'Atualização concluída com sucesso!';
+            document.getElementById('progress-bar-manual').style.width = '100%';
+            document.getElementById('progress-bar-manual').textContent = '100%';
+            eventSource.close();
+
+            setTimeout(() => {
+                document.getElementById('progress-container-manual').style.display = 'none';
+                document.getElementById('progress-bar-manual').style.width = '0%';
+                document.getElementById('progress-bar-manual').textContent = '0%';
+                document.getElementById('messageManual').style.display = 'none';
+                form.querySelector("button[type=submit]").disabled = false;
+            }, 2000);
+        }
+        else {
+            // Atualiza progresso
+            document.getElementById('progress-bar-manual').style.width = data.percent + '%';
+            document.getElementById('progress-bar-manual').textContent = data.percent + '%';
+            document.getElementById('messageManual').textContent = data.message;
+
+            document.getElementById('progressoUpdateManual').style.display = 'block';
+            if (data.progresso) {
+                avancarProgressoManual(data.progresso);
+            }
+        }
+    };
+
+    eventSource.onerror = function() {
+        document.getElementById('messageManual').style.color = 'red';
+        document.getElementById('messageManual').textContent = 'Erro na conexão com o servidor';
+        eventSource.close();
+        form.querySelector("button[type=submit]").disabled = false;
+    };
+}
+
+// Steps específicos da aba 3
+const stepsManual = ['moviproc', 'histmoviproc'];
+let progressoManualIndex = 0;
+
+function iniciarProgressoManual() {
+    progressoManualIndex = 0;
+    document.getElementById('progressoUpdateManual').style.display = 'block';
+    atualizarProgressoManual();
+}
+
+function atualizarProgressoManual() {
+    stepsManual.forEach((id, index) => {
+        const el = document.getElementById(id);
+        if (index < progressoManualIndex) {
+            el.textContent = 'Concluído';
+            el.style.color = 'green';
+        } else if (index === progressoManualIndex) {
+            el.textContent = 'Em execução';
+            el.style.color = 'orange';
+        } else {
+            el.textContent = 'Aguardando';
+            el.style.color = 'lightgray';
+        }
+    });
+}
+
+function avancarProgressoManual(step) {
+    const idx = stepsManual.indexOf(step);
+    if (idx !== -1) {
+        progressoManualIndex = idx + 1;
+        atualizarProgressoManual();
+    }
+}
+
+function resetarProgressoManual() {
+    document.getElementById('progressoUpdateManual').style.display = 'none';
+    stepsManual.forEach((id) => {
+        const el = document.getElementById(id);
+        el.textContent = 'Aguardando';
+        el.style.color = 'lightgray';
+    });
+    progressoManualIndex = 0;
+}
+
+// Reset ao fechar modal
+modal.addEventListener('hidden.bs.modal', function () {
+    resetarProgressoManual();
+});
 
 </script>
