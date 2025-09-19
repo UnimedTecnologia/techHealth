@@ -243,7 +243,7 @@ function exibirLoader(event) {
     const msgLoader = document.getElementById('msgLoader');
 
     //! VERIFICA SE SELECIONOU ALGUMA TRANSAÇÃO - NOTIFICA QUE PODE LEVAR MAIS TEMPO PARA GERAR
-    if ($("#selecaoTransacao .lista-item").length === 0) {
+    if ($("#selecaoTransacao .lista-item").length === 0 && !relatorioGrupo.checked) {
         //* Exibe o SweetAlert2 com opção de continuar ou selecionar
         Swal.fire({
             title: 'Nenhuma Transação Selecionada!',
@@ -460,15 +460,22 @@ $(document).on('keydown', function (e) {
 });
 
 //! radios buttons relatorio de prestador
-$("#relatorioPrestador").on("click", function(){
-    $("#divPrestadores").css("display","block");
-    $("#divGrupo").css("display","none");
+$("#relatorioGrupo").on("click", function () {
+    $("#divPrestadores").css("display", "none");
+    $("#divGrupo").css("display", "block");
 
-})
-$("#relatorioGrupo").on("click", function(){
-    $("#divPrestadores").css("display","none");
-    $("#divGrupo").css("display","block");
-})
+    // esconde os campos
+    $("#dvSerieDoc, #dvTransacao,  #txtTransacao, #selecaoTransacao").hide();
+});
+
+$("#relatorioPrestador").on("click", function () {
+    $("#divPrestadores").css("display", "block");
+    $("#divGrupo").css("display", "none");
+
+    // mostra os campos
+    $("#dvSerieDoc, #dvTransacao, #txtTransacao, #selecaoTransacao").show();
+});
+
 
 //! CARREGA E PREENCHE TELAS PARA PERMISSÃO NO CADASTRO (somente administrador)
 let cachedTelas = null; //* Variável global para armazenar os dados

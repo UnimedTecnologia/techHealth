@@ -50,23 +50,23 @@
                     </div>
                     
                     <div class="mb-3 form-floating-label">
-                        <input id="numref" type="text" pattern="\d*" class="form-control inputback" name="numref" placeholder=" " required >
+                        <input id="numref" type="text" pattern="[0-9,]*" class="form-control inputback" name="numref" placeholder=" " required >
                         <label for="numref">Número Período Referência *</label>
                     </div>
 
-                    <div class="mb-3 form-floating-label">
+                    <div id="dvSerieDoc" class="mb-3 form-floating-label">
                         <input id="seriedoc" type="text" class="form-control inputback" name="seriedoc" placeholder=" "  >
                         <label for="seriedoc">Série Doc. Original</label>
                     </div>
 
                     
-                    <div class="mb-3">
+                    <div id="dvTransacao" class="mb-3">
                         <select id="transacao" name="cd_transacao" class="custom-select" >
                                 <option value="" disabled selected>Transação </option>
                             <option value="1"></option>
                         </select>
                     </div>
-                    <label for="transacao" class="form-label">Código transação</label>
+                    <label id="txtTransacao" for="transacao" class="form-label">Código transação</label>
                     <div id="selecaoTransacao" class="mb-5 div-selecao" style="overflow:auto">
 
                     </div>
