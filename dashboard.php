@@ -359,6 +359,7 @@
       <?php include_once "modalDocPendenteLiberacao.php"; ?>
       <?php include_once "modalTrocaAcomodacao.php"; ?>
       <?php include_once "modalDadosProfissionalExecutante.php"; ?>
+      <?php include_once "modalRelatorioTitulo.php"; ?>
       
 
     <!-- Bootstrap JS -->

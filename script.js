@@ -11,6 +11,8 @@
     abrirModal($('#modalAlteraPrestador'), $("#prestadorTroca"));
     //* Altera Porcentagem Documento
     abrirModal($('#modalAlteraPorcentagemDocumento'), $("#prestadorAltPorcentDoc"));
+    //* Relatório Titulo Prestador
+    abrirModal($('#modalRelatorioTituloPrestador'), $("#prestadorTitulo"));
     
     //*Configura select no modal (prestadores.js)
     initSelect2('#prestadorAutorizacao', '#modalDadosdeautorizacao', 'Selecione um Prestador*');
@@ -21,9 +23,10 @@
     initSelect2('#prestadorTroca', '#modalAlteraPrestador', 'Selecione um Prestador*');
     initSelect2('#telas', '#modalCadastrar', ''); //* Input seleção de telas - permissão(Cadastro)
     initSelect2('#prestadorAltPorcentDoc', '#modalAlteraPorcentagemDocumento', 'Selecione um Prestador*');
+    initSelect2('#prestadorTitulo', '#modalRelatorioTituloPrestador', 'Selecione um Prestador*');
 
     //*GET PRESTADOR E PREENCHE INPUT SELECT (prestadores.js) 
-    getPrestador('utils/get_prestador.php', ['#prestador', '#correcaoPrestador', '#prestadorAutorizacao', '#prestadorTroca', '#prestadorAltPorcentDoc']);
+    getPrestador('utils/get_prestador.php', ['#prestador', '#prestadorTitulo', '#correcaoPrestador', '#prestadorAutorizacao', '#prestadorTroca', '#prestadorAltPorcentDoc']);
     
     //*GET GRUPO PRESTADORES
     getGrupoPrestador(['#grupoPrest']);
@@ -33,6 +36,7 @@
     //!carrega telas liberadas do usuário
     getPermissoesTela();
 
+    //* LIMPEZA DOS MODAIS
     //! MODAL AUTORIZAÇÃO
     var modal = document.getElementById('modalDadosdeautorizacao');
     var form = document.getElementById('formAutorizacao');
@@ -40,8 +44,7 @@
     modal.addEventListener('hidden.bs.modal', function () {
         form.reset();
     });
-
-
+    
     //! MODAL RELATORIO PRESTADOR
     var modalPrest = document.getElementById('modalRelatorioPrestador');
     var formPrest = document.getElementById('formPrestador');
@@ -226,6 +229,10 @@ function handleSelection(selectId, targetDivId) {
 $("#prestador").off("change").on("change", function () {
     handleSelection('prestador', 'listaPrestadores');
 });
+//! prestador titulo
+// $("#prestadorTitulo").off("change").on("change", function () {
+//     handleSelection('prestadorTitulo', 'listaPrestadoresTitulo');
+// });
 
 $("#transacao").off("change").on("change", function () {
     handleSelection('transacao', 'selecaoTransacao');
