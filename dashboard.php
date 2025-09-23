@@ -360,6 +360,7 @@
       <?php include_once "modalTrocaAcomodacao.php"; ?>
       <?php include_once "modalDadosProfissionalExecutante.php"; ?>
       <?php include_once "modalRelatorioTitulo.php"; ?>
+      <?php include_once "modalDePara.php"; ?>
       
 
     <!-- Bootstrap JS -->
