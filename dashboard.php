@@ -361,6 +361,7 @@
       <?php include_once "modalDadosProfissionalExecutante.php"; ?>
       <?php include_once "modalRelatorioTitulo.php"; ?>
       <?php include_once "modalDePara.php"; ?>
+      <?php include_once "modalAlterarStatusGuia.php"; ?>
       
 
     <!-- Bootstrap JS -->
