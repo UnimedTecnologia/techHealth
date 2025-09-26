@@ -65,55 +65,26 @@ document.getElementById("consultarStatus").addEventListener("submit", function (
     const formData = new FormData(this);
 
     axios.post('regulacao/get_statusGuiaRegulacao.php', formData, {
-        headers: {
-            'Content-Type': 'multipart/form-data'
-        }
+        headers: { 'Content-Type': 'multipart/form-data' }
     })
     .then(function (response) {
-        console.log(response.data);
         if (response.data.error) {
             alert(response.data.message);
         } else {
-            // Atualizar os elementos do novo modal
+            // Preencher dados
             document.getElementById("modalNrGuiaReg").innerText = response.data.data[0].NR_GUIA_ATENDIMENTO;
             document.getElementById("modalStatusReg").innerText = response.data.data[0].STATUS_GUIA;
             document.getElementById("statusSelectReg").value = response.data.data[0].IN_LIBERADO_GUIAS;
-            
-            // Remover qualquer handler anterior
-            if (modalTransitionHandler) {
-                document.getElementById("modalAlterarStatusGuia").removeEventListener("hidden.bs.modal", modalTransitionHandler);
-            }
 
-            // Fechar o modal atual
-            const modalStatus = bootstrap.Modal.getInstance(document.getElementById("modalAlterarStatusGuia"));
-            if (modalStatus) {
-                modalStatus.hide();
-            }
+            // Fecha o modal de busca
+            const modalBusca = bootstrap.Modal.getOrCreateInstance(document.getElementById("modalAlterarStatusGuia"));
+            modalBusca.hide();
 
-            // Handler para quando o modal estiver completamente fechado
-            modalTransitionHandler = function () {
-                // Limpar qualquer backdrop residual
-                const backdrops = document.querySelectorAll('.modal-backdrop');
-                backdrops.forEach(backdrop => {
-                    if (backdrop.parentNode) {
-                        backdrop.parentNode.removeChild(backdrop);
-                    }
-                });
-
-                // Remover classes do body
-                document.body.classList.remove('modal-open');
-                document.body.style.overflow = '';
-                document.body.style.paddingRight = '';
-
-                // Abrir o próximo modal após um pequeno delay
-                setTimeout(() => {
-                    const modal = new bootstrap.Modal(document.getElementById("modalStatusGuia"));
-                    modal.show();
-                }, 50);
-            };
-
-            // Adicionar o evento (apenas uma vez)
-            document.getElementById("modalAlterarStatusGuia").addEventListener("hidden.bs.modal", modalTransitionHandler, { once: true });
+            // Quando ele terminar de fechar, abre o de detalhes
+            document.getElementById("modalAlterarStatusGuia").addEventListener("hidden.bs.modal", () => {
+                const modalDetalhes = bootstrap.Modal.getOrCreateInstance(document.getElementById("modalStatusGuia"));
+                modalDetalhes.show();
+            }, { once: true });
         }
     })
     .catch(function (error) {
@@ -121,6 +92,7 @@ document.getElementById("consultarStatus").addEventListener("submit", function (
         alert("Erro ao buscar dados da guia.");
     });
 });
+
 
 // UPDATE
 document.getElementById("updateStatusReg").addEventListener("submit", function (e) {
@@ -134,24 +106,17 @@ document.getElementById("updateStatusReg").addEventListener("submit", function (
         loadingOverlay.style.display = 'flex';
     }
     
-    // Capturar os dados necessários
     const formData = new FormData();
     formData.append('statusSelectReg', document.getElementById("statusSelectReg").value);
     formData.append('nr_guiaReg', document.getElementById("modalNrGuiaReg").innerText);
     formData.append('ano', document.getElementById("anoGuiaReg").value);
     
     axios.post('regulacao/update_statusGuiaReg.php', formData, {
-        headers: {
-            'Content-Type': 'multipart/form-data'
-        }
+        headers: { 'Content-Type': 'multipart/form-data' }
     })
     .then(function (response) {
-        if (loadingOverlay) {
-            loadingOverlay.style.display = 'none';
-        }
+        if (loadingOverlay) loadingOverlay.style.display = 'none';
         
-        console.log(response.data); 
-
         Swal.fire({
             icon: response.data.type,
             title: response.data.type === 'success' ? 'Sucesso!' : 'Erro!',
@@ -159,29 +124,14 @@ document.getElementById("updateStatusReg").addEventListener("submit", function (
             showConfirmButton: true
         }).then((result) => {
             if (result.isConfirmed && response.data.type === 'success') {
-                // Fechar o modal de detalhes
-                const modalDetalhes = bootstrap.Modal.getInstance(document.getElementById("modalStatusGuia"));
-                if (modalDetalhes) {
-                    modalDetalhes.hide();
-                }
-                
-                // Limpar o formulário de consulta
+                const modalDetalhes = bootstrap.Modal.getOrCreateInstance(document.getElementById("modalStatusGuia"));
+                modalDetalhes.hide();
                 document.getElementById("consultarStatus").reset();
-                
-                // Limpar qualquer backdrop residual
-                setTimeout(() => {
-                    const backdrops = document.querySelectorAll('.modal-backdrop');
-                    backdrops.forEach(backdrop => backdrop.remove());
-                    document.body.classList.remove('modal-open');
-                }, 300);
             }
         });
     })
     .catch(function (error) {
-        console.error("Erro ao enviar os dados:", error);
-        if (loadingOverlay) {
-            loadingOverlay.style.display = 'none';
-        }
+        if (loadingOverlay) loadingOverlay.style.display = 'none';
         Swal.fire({
             icon: 'error',
             title: 'Erro',
@@ -189,55 +139,19 @@ document.getElementById("updateStatusReg").addEventListener("submit", function (
         });
     });
 });
-// document.getElementById("updateStatusReg").addEventListener("submit", function (e) {
-//     e.preventDefault();
 
-//     const loadingOverlay = document.getElementById('loadingOverlay');
-//     const msgLoader = document.getElementById('msgLoader');
 
-//     if (loadingOverlay && msgLoader) {
-//         msgLoader.innerText = "Atualizando dados, aguarde por favor...";
-//         loadingOverlay.style.display = 'flex';
-//     }
-    
-//     axios.post('regulacao/update_statusGuiaReg.php', {
-//         statusSelectReg: document.getElementById("statusSelectReg").value,
-//         nr_guiaReg: document.getElementById("modalNrGuiaReg").innerText,
-//         ano: document.getElementById("anoGuiaReg").value
-//     }, {
-//         headers: {
-//             'Content-Type': 'application/x-www-form-urlencoded'
-//         }
-//     })
-//     // Substitua a parte do then da consulta por:
-// .then(function (response) {
-//     if (response.data.error) {
-//         alert(response.data.message);
-//     } else {
-//         document.getElementById("modalNrGuiaReg").innerText = response.data.data[0].NR_GUIA_ATENDIMENTO;
-//         document.getElementById("modalStatusReg").innerText = response.data.data[0].STATUS_GUIA;
-//         document.getElementById("statusSelectReg").value = response.data.data[0].IN_LIBERADO_GUIAS;
-        
-//         // Fechar primeiro modal e abrir o segundo diretamente
-//         bootstrap.Modal.getInstance(document.getElementById("modalAlterarStatusGuia")).hide();
-        
-//         setTimeout(() => {
-//             new bootstrap.Modal(document.getElementById("modalStatusGuia")).show();
-//         }, 300);
-//     }
-// })
-//     .catch(function (error) {
-//         console.error("Erro ao enviar os dados:", error);
-//         if (loadingOverlay) {
-//             loadingOverlay.style.display = 'none';
-//         }
-//         Swal.fire({
-//             icon: 'error',
-//             title: 'Erro',
-//             text: 'Erro ao atualizar status da guia.'
-//         });
-//     });
-// });
+// 🔑 FIX EXTRA: sempre que qualquer modal fechar, garantir que não fica backdrop preso
+document.querySelectorAll('.modal').forEach(modalEl => {
+    modalEl.addEventListener("hidden.bs.modal", () => {
+        const backdrops = document.querySelectorAll('.modal-backdrop');
+        backdrops.forEach(b => b.remove());
+        document.body.classList.remove('modal-open');
+        document.body.style.overflow = '';
+        document.body.style.paddingRight = '';
+    });
+});
+
 
 // Cleanup para garantir que não haja backdrops residuais
 document.addEventListener('DOMContentLoaded', function() {

@@ -387,6 +387,88 @@
         } 
     ?>
 
+<!-- Helper seguro para modals (cole UMA vez, preferencialmente no final do dashboard.php) -->
+<script>
+(function () {
+  if (window.__bootstrapModalSafeInit) return;
+  window.__bootstrapModalSafeInit = true;
+
+  const DEBUG = false; // troque para true se quiser logs
+  function log(...args){ if(DEBUG) console.log('[modal-safe]', ...args); }
+
+  // Compat helper: getOrCreateInstance compatível com versões que não tenham getOrCreateInstance
+  function getOrCreateModalInstance(el) {
+    if (!el) return null;
+    if (bootstrap.Modal.getOrCreateInstance) return bootstrap.Modal.getOrCreateInstance(el);
+    return bootstrap.Modal.getInstance(el) || new bootstrap.Modal(el);
+  }
+
+  function cleanIfNoShownModals() {
+    try {
+      const shownCount = document.querySelectorAll('.modal.show').length;
+      log('clean check, shownCount=', shownCount);
+      if (shownCount === 0) {
+        // remove backdrops pendentes
+        document.querySelectorAll('.modal-backdrop').forEach(b => b.remove());
+        // garantir estado do body
+        document.body.classList.remove('modal-open');
+        document.body.style.removeProperty('overflow');
+        document.body.style.removeProperty('padding-right');
+      }
+    } catch (err) {
+      console.error('[modal-safe] cleanIfNoShownModals error', err);
+    }
+  }
+
+  // Antes de qualquer tentativa de abrir modal via clique, limpamos resíduos (captura)
+  document.addEventListener('click', function (e) {
+    const btn = e.target.closest('[data-bs-toggle="modal"]');
+    if (!btn) return;
+    // remover eventuais backdrops que bloqueiam a abertura
+    cleanIfNoShownModals();
+  }, true);
+
+  // Quando qualquer modal terminar de fechar, rodamos limpeza com pequeno atraso
+  document.addEventListener('hidden.bs.modal', function () {
+    setTimeout(cleanIfNoShownModals, 40);
+  });
+
+  // Se um modal já foi mostrado e o backdrop realmente não existir (casos raros), adicionamos um fallback
+  // Rodamos no evento 'shown.bs.modal' (após animação) para não conflitar com o processo do Bootstrap
+  document.addEventListener('shown.bs.modal', function (e) {
+    setTimeout(function () {
+      try {
+        const modalEl = e.target;
+        if (!modalEl.classList.contains('show')) return;
+        const backdrops = document.querySelectorAll('.modal-backdrop');
+        if (backdrops.length === 0) {
+          // cria fallback seguro
+          const fb = document.createElement('div');
+          fb.className = 'modal-backdrop fade show';
+          document.body.appendChild(fb);
+          log('fallback backdrop created for', modalEl.id);
+        }
+        if (!document.body.classList.contains('modal-open')) {
+          document.body.classList.add('modal-open');
+        }
+      } catch (err) {
+        console.error('[modal-safe] shown handler error', err);
+      }
+    }, 80);
+  });
+
+  // Utilitário opcional para abrir modal com segurança (se preferir abrir por JS)
+  window.safeShowModal = function (id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    cleanIfNoShownModals();
+    const inst = getOrCreateModalInstance(el);
+    inst.show();
+  };
+
+  log('modal-safe initialized');
+})();
+</script>
 
 </body>
 </html>
