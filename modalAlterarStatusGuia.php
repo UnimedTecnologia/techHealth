@@ -32,7 +32,9 @@
             </div>
             <div class="modal-body">
                 <p><strong>Número da Guia:</strong> <span id="modalNrGuiaReg"></span></p>
-                <p><strong>Status Atual:</strong> <span id="modalStatusReg"></span></p>
+                <p><strong>Nome Beneficiário: </strong> <span id="modalNomeBenef" style="border: 1px dashed #ccc;"></span></p>
+                <p><strong>Carteirinha: </strong> <span id="modalCarteiraBenef" style="border: 1px dashed #ccc;"></span></p>
+                <p><strong>Status Atual:</strong> <span id="modalStatusReg" style="border: 1px solid #ccc; background: lightgray"></span></p>
 
                 <form id="updateStatusReg">
                     <div class="mb-3">
@@ -68,10 +70,13 @@ document.getElementById("consultarStatus").addEventListener("submit", function (
         headers: { 'Content-Type': 'multipart/form-data' }
     })
     .then(function (response) {
+        console.log(response.data);
         if (response.data.error) {
             alert(response.data.message);
         } else {
             // Preencher dados
+            document.getElementById("modalNomeBenef").innerText = response.data.data[0].NOME;
+            document.getElementById("modalCarteiraBenef").innerText = response.data.data[0].CARTEIRINHA;
             document.getElementById("modalNrGuiaReg").innerText = response.data.data[0].NR_GUIA_ATENDIMENTO;
             document.getElementById("modalStatusReg").innerText = response.data.data[0].STATUS_GUIA;
             document.getElementById("statusSelectReg").value = response.data.data[0].IN_LIBERADO_GUIAS;
