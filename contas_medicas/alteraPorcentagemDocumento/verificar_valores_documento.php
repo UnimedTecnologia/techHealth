@@ -80,19 +80,19 @@ while ($row = oci_fetch_assoc($stmtProc)) {
 }
 
 //* Verificar resultados
-if (empty($dataProc)) {
-    //! se não encontrar, retorna para dashboard com a mensagem
-    $response = [
-        'error' => true,
-        'message' => 'Dados não encontrados',
-        'procedimento' => '',
-        'insumo' => ''
-    ];
-    $_SESSION['dadosValoresDoc'] = $response;
-    header("Location: ../../dashboard.php");
-    exit;
+// if (empty($dataProc)) {
+//     //! se não encontrar, retorna para dashboard com a mensagem
+//     $response = [
+//         'error' => true,
+//         'message' => 'Dados não encontrados',
+//         'procedimento' => '',
+//         'insumo' => ''
+//     ];
+//     $_SESSION['dadosValoresDoc'] = $response;
+//     header("Location: ../../dashboard.php");
+//     exit;
 
-} else {
+// } else {
 
     //! encontrando valores na tabela procedimento - busca na tabela insumo
     //* Preparar consulta
@@ -156,7 +156,7 @@ if (empty($dataProc)) {
     header("Location: index.php");
      exit;
 
-}
+// }
 
 function executeQuery($conn, $sql, $bindings) {
     $stmt = oci_parse($conn, $sql);

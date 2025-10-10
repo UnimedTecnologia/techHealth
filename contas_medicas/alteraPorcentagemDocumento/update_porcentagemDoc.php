@@ -5,7 +5,7 @@ UPDATES: TABELA MOV_INSU E HISTOR_MOVIMEN_INSUMO
 */ //* ////////////////////////////////////////////////////////////
 header('Content-Type: text/html; charset=utf-8');
 session_start();
-set_time_limit(300); //* Definir o tempo máximo de execução para 300 segundos (5 minutos)
+set_time_limit(600); //* Definir o tempo máximo de execução para 300 segundos (5 minutos)
 // Dados recebidos via POST
 $porcentagem = $_POST['porcentagem'] ?? null; 
 $procedimentos = $_POST['procedimentos'] ?? [];
