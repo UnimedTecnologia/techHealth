@@ -635,7 +635,7 @@ async function getPermissoesTela() {
             // Título do grupo
             const grupoTitulo = document.createElement('div');
             grupoTitulo.className = 'text-center';
-            grupoTitulo.innerHTML = `<span>${grupo}</span>`;
+            grupoTitulo.innerHTML = `<span style="font-weight:bold">${grupo}</span>`;
             grupoDiv.appendChild(grupoTitulo);
 
             // Botões do grupo
