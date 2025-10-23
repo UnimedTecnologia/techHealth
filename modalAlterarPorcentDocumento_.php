@@ -19,10 +19,10 @@
                         <input id="numDocPorcent" type="text" class="form-control inputback" name="numDoc" placeholder=" " required maxlength="30">
                         <label for="numDocPorcent">Número de documento *</label>
                     </div>
-                    <!-- <div class="mb-3 form-floating-label">
+                    <div class="mb-3 form-floating-label">
                         <input id="numPacPorcent" type="text" class="form-control inputback" name="numPacote" placeholder=" " required maxlength="30">
                         <label for="numPacPorcent" >Pacote *</label>
-                    </div> -->
+                    </div>
 
                     <div class="mb-3 form-floating-label">
                         <input id="numPerPercent" type="text" class="form-control inputback" name="periodoRef" placeholder=" " required maxlength="30">

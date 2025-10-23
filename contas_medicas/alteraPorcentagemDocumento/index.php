@@ -1,324 +1,548 @@
-<?php
+<?php 
 header('Content-Type: text/html; charset=utf-8');
 session_start();
 
 if(!isset($_SESSION['dadosValoresDoc'])){
     header("Location: ../../dashboard.php");
-}else{
-    //* Recuperar os dados
-    $dados = $_SESSION['dadosValoresDoc'];
+    exit;
+}
 
-    if($dados['error']){
-        header("Location: ../../dashboard.php");
-        exit;
-    }else{
-        $procedimentos = $dados['procedimento'] ?? [];
-        $insumos = $dados['insumo'] ?? [];
+$dados = $_SESSION['dadosValoresDoc'];
+
+if (isset($dados['error']) && $dados['error']) {
+    header("Location: ../../dashboard.php");
+    exit;
+}
+
+$resultados = $dados['resultados'] ?? [];
+
+// 🔹 Separar registros por origem (P = procedimento, I = insumo)
+$procedimentos = [];
+$insumos = [];
+
+// FUNÇÃO PARA FORMATAR VALORES
+function formatarValorFinal($valor) {
+    if ($valor === null || $valor === '') {
+        return '0,00';
+    }
+    
+    $valorStr = (string)$valor;
+    
+    // Se já está no formato brasileiro (com vírgula e ponto), retorna como está
+    if (preg_match('/^\d{1,3}(?:\.\d{3})*,\d+$/', $valorStr)) {
+        return $valorStr;
+    }
+    
+    // Se tem apenas vírgula como separador decimal
+    if (strpos($valorStr, ',') !== false && strpos($valorStr, '.') === false) {
+        $partes = explode(',', $valorStr);
+        $inteira = $partes[0];
+        $decimal = $partes[1] ?? '00';
+        $inteiraFormatada = number_format((float)$inteira, 0, '', '.');
+        return $inteiraFormatada . ',' . $decimal;
+    }
+    
+    // Formato float padrão (com ponto decimal)
+    if (strpos($valorStr, '.') !== false) {
+        $partes = explode('.', $valorStr);
+        $inteira = $partes[0];
+        $decimal = $partes[1];
+        $inteiraFormatada = number_format((float)$inteira, 0, '', '.');
+        return $inteiraFormatada . ',' . $decimal;
+    }
+    
+    // Apenas número inteiro
+    return number_format((float)$valorStr, 0, '', '.') . ',00';
+}
+
+foreach ($resultados as $item) {
+    $origem = isset($item['ORIGEM']) ? strtoupper(trim($item['ORIGEM'])) : '';
+    if ($origem === 'P') {
+        $procedimentos[] = $item;
+    } elseif ($origem === 'I') {
+        $insumos[] = $item;
     }
 }
 
+// 🔹 AGRUPAR POR PACOTE OCORRÊNCIA
+$pacotesOcorrencia = [];
+
+foreach ($procedimentos as $proc) {
+    $ocorrencia = $proc['PACOTE_OCORRENCIA'] ?? '';
+    if ($ocorrencia !== '') {
+        if (!isset($pacotesOcorrencia[$ocorrencia])) {
+            $pacotesOcorrencia[$ocorrencia] = [
+                'CD_PACOTE' => $proc['CD_PACOTE'] ?? '',
+                'PACOTE_OCORRENCIA' => $ocorrencia,
+                'procedimentos' => [],
+                'insumos' => []
+            ];
+        }
+        $pacotesOcorrencia[$ocorrencia]['procedimentos'][] = $proc;
+    }
+}
+
+// Agrupar os insumos pela mesma ocorrência
+foreach ($insumos as $insu) {
+    $ocorrencia = $insu['PACOTE_OCORRENCIA'] ?? '';
+    if ($ocorrencia !== '' && isset($pacotesOcorrencia[$ocorrencia])) {
+        $pacotesOcorrencia[$ocorrencia]['insumos'][] = $insu;
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autorizacao</title>
+    <title>Alterar Porcentagem Documento</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link href="../../style.css" rel="stylesheet"/>
 
     <style>
-        table {
-            word-wrap: break-word;
-            table-layout: auto;
-        }
-
-        th, td {
-            text-align: center;
-            vertical-align: middle;
-        }
-
-        .table-responsive {
-            margin: auto;
-            max-width: 100%;
-        }
+        table { word-wrap: break-word; table-layout: fixed; }
+        th, td { text-align: center; vertical-align: middle; font-size: 0.9rem; }
+        .table-responsive { margin: auto; max-width: 100%; overflow-x: auto; }
+        .small-input { width: 90px; margin: 0 auto; }
+        .muted { color: #6c757d; }
+        .table-dark th { background-color: #343a40; border-color: #454d55; }
+        .valor { text-align: right; padding-right: 15px !important; font-family: 'Courier New', monospace; }
+        .valor-small { font-size: 0.85rem; }
     </style>
-
-
-
 </head>
 <body>
-    <?php include_once "../../nav.php"; // CABEÇALHO NAVBAR ?>
+<?php include_once "../../nav.php"; ?>
 
-    <div id="loadingOverlay">
-        <div class="spinner"></div>
-        <p id="msgLoader">Carregando</p>
-    </div>
+<div id="loadingOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:9999; justify-content:center; align-items:center; flex-direction:column; color:white;">
+    <div class="spinner-border" role="status"></div>
+    <p id="msgLoader" class="mt-2">Carregando</p>
+</div>
 
-    <div class="d-flex align-items-center mt-100 mb-2" >
-        <div style="position: absolute; left: 10px;">
-            <button class="btn" onclick="location.href='../../dashboard.php'" style="background-color: #008e55; color: white; margin-left: 10px;">
-                <i class="bi bi-arrow-left"></i> <!-- Ícone de voltar -->
+<div class="container mt-4">
+    <div class="d-flex align-items-center mb-4">
+        <div>
+            <button class="btn" onclick="location.href='../../dashboard.php'" style="background-color: #008e55; color: white;">
+                <i class="bi bi-arrow-left"></i> Voltar
             </button>
         </div>
         <div class="mx-auto text-center">
             <h3>Alterar Porcentagem Documento</h3> 
         </div>
+        <div style="width: 100px;"></div>
     </div>
 
-    <div id="tabelas">
-        <!-- Tabela de Procedimentos -->
-        <h4 class="mt-4 text-center">Tabela de Procedimentos</h4>
-        <table class="table table-bordered table-striped">
-            <thead class="table-dark">
-                <tr>
-                    <th>Documento</th>
-                    <th>Prestador</th>
-                    <th>Transação</th>
-                    <th>Série</th>
-                    <th>Nº Processo</th>
-                    <th>Sequência</th>
-                    <th>Período Ref</th>
-                    <th>Ano Ref</th>
-                    <th>Pacote</th>
-                    <th>Valor Cobrado</th>
-                    <th>Valor Glosado</th>
-                    <th>% Individual</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if (!empty($procedimentos)): ?>
-                    <?php foreach ($procedimentos as $proc): ?>
-                        <tr>
-                            <td><?= htmlspecialchars($proc['DOC'] ?? '') ?></td>
-                            <td><?= htmlspecialchars($proc['CD_PRESTADOR'] ?? '') ?></td>
-                            <td><?= htmlspecialchars($proc['CD_TRANSACAO'] ?? '') ?></td>
-                            <td><?= htmlspecialchars($proc['SERIE'] ?? '') ?></td>
-                            <td><?= htmlspecialchars($proc['NR_PROCESSO'] ?? '') ?></td>
-                            <td><?= htmlspecialchars($proc['SEQ'] ?? '') ?></td>
-                            <td><?= htmlspecialchars($proc['NR_PERREF'] ?? '') ?></td>
-                            <td><?= htmlspecialchars($proc['DT_ANOREF'] ?? '') ?></td>
-                            <td><?= htmlspecialchars($proc['CD_PACOTE'] ?? '') ?></td>
-                            <td><?= htmlspecialchars($proc['VL_COBRADO'] ?? '') ?></td>
-                            <td><?= htmlspecialchars($proc['VL_GLOSADO'] ?? '') ?></td>
-                            <td>
-                                <input type="text" name="procedimentos[porcentagem][]" class="form-control text-center" maxlength="3" pattern="\d*" style="width: 80px;" oninput="validarValor(this)">
-                            </td>
-                            <!-- Hidden fields -->
-                            <input type="hidden" name="procedimentos[doc][]" value="<?= $proc['DOC'] ?>">
-                            <input type="hidden" name="procedimentos[prestador][]" value="<?= $proc['CD_PRESTADOR'] ?>">
-                            <input type="hidden" name="procedimentos[perref][]" value="<?= $proc['NR_PERREF'] ?>">
-                            <input type="hidden" name="procedimentos[anoref][]" value="<?= $proc['DT_ANOREF'] ?>">
-                            <input type="hidden" name="procedimentos[pacote][]" value="<?= $proc['CD_PACOTE'] ?>">
-                            <input type="hidden" name="procedimentos[seq][]" value="<?= $proc['SEQ'] ?>">
-                            <input type="hidden" name="procedimentos[processo][]" value="<?= $proc['NR_PROCESSO'] ?>">
-                        </tr
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <tr>
-                        <td colspan="11" class="text-center">Nenhum procedimento encontrado.</td>
-                    </tr>
+    <form id="formPacotes" action="atualizar_pacotes.php" method="POST">
+        <?php 
+        $parametros = $_SESSION['parametros_porcentagem'] ?? [];
+        ?>
+        
+        <!-- TABELA DE PACOTES - AGRUPADO POR OCORRÊNCIA -->
+        <div class="card mb-4">
+            <div class="card-header bg-warning text-dark">
+                <h4 class="mb-0"><i class="bi bi-percent"></i> Pacotes por Ocorrência - <?= count($pacotesOcorrencia) ?> ocorrências</h4>
+                <?php if (!empty($parametros)): ?>
+                <div class="small mt-1">
+                    Documento: <strong><?= htmlspecialchars($parametros['numDoc']) ?></strong> | 
+                    Prestador: <strong><?= htmlspecialchars($parametros['codPrest']) ?></strong> | 
+                    Período: <strong><?= htmlspecialchars($parametros['periodoRef']) ?></strong> | 
+                    Ano: <strong><?= htmlspecialchars($parametros['dtAnoRef']) ?></strong>
+                </div>
                 <?php endif; ?>
-            </tbody>
-        </table>
-        <div class="text-center">
-            <!-- <button type="submit" class="btn btn-success mb-4 mt-3">Salvar Alterações</button> -->
+            </div>
+            <div class="card-body">
+                <p class="text-muted text-center small mb-3">
+                    <i class="bi bi-exclamation-circle"></i> Informe a porcentagem por ocorrência de pacote. 
+                    A atualização será aplicada ao procedimento e todos os insumos da mesma ocorrência.
+                </p>
+                
+                <?php if (!empty($pacotesOcorrencia)): ?>
+                <div class="table-responsive">
+                    <table class="table table-bordered align-middle table-sm table-striped">
+                        <thead class="table-dark text-center">
+                            <tr>
+                                <th style="width: 5%">#</th>
+                                <th style="width: 15%">Pacote</th>
+                                <th style="width: 15%">Ocorrência</th>
+                                <th style="width: 20%">Procedimentos</th>
+                                <th style="width: 20%">Insumos</th>
+                                <th style="width: 25%">% Individual</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $idx = 0; ?>
+                            <?php foreach ($pacotesOcorrencia as $ocorrencia => $dados): $idx++; ?>
+                                <tr>
+                                    <td class="text-center"><?= $idx ?></td>
+                                    <td style="font-weight:bold"><?= htmlspecialchars($dados['CD_PACOTE']) ?></td>
+                                    <td style="font-weight:bold"><?= htmlspecialchars($ocorrencia) ?></td>
+                                    <td class="small">
+                                        <?= count($dados['procedimentos']) ?> procedimento(s)
+                                    </td>
+                                    <td class="small">
+                                        <?= count($dados['insumos']) ?> insumo(s)
+                                    </td>
+                                    <td>
+                                        <div class="d-flex justify-content-center align-items-center">
+                                            <div class="input-group input-group-sm" style="max-width: 120px;">
+                                                <input 
+                                                    type="text" 
+                                                    name="pacotes[<?= $idx ?>][porcentagem]" 
+                                                    id="pacote_pct_<?= $idx ?>" 
+                                                    class="form-control form-control-sm text-center" 
+                                                    placeholder="0.00" 
+                                                    maxlength="6"
+                                                    oninput="validarPercentualPacote(this)">
+                                                <span class="input-group-text">%</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Hidden fields com TODOS os progress_recid para update -->
+                                        <input type="hidden" name="pacotes[<?= $idx ?>][cd_pacote]" value="<?= htmlspecialchars($dados['CD_PACOTE']) ?>">
+                                        <input type="hidden" name="pacotes[<?= $idx ?>][pacote_ocorrencia]" value="<?= htmlspecialchars($ocorrencia) ?>">
+
+                                        <!-- Progress RECIDs dos Procedimentos -->
+                                        <?php 
+                                        $proc_recids = [];
+                                        $proc_hist_recids = [];
+                                        $insu_recids = [];
+                                        $insu_hist_recids = [];
+
+                                        foreach ($dados['procedimentos'] as $proc) {
+                                            if (!empty($proc['PROGRESS_RECID'])) {
+                                                $proc_recids[] = $proc['PROGRESS_RECID'];
+                                            }
+                                            if (!empty($proc['PROGRESS_RECID_HIST'])) {
+                                                $proc_hist_recids[] = $proc['PROGRESS_RECID_HIST'];
+                                            }
+                                        }
+
+                                        foreach ($dados['insumos'] as $insu) {
+                                            if (!empty($insu['PROGRESS_RECID'])) {
+                                                $insu_recids[] = $insu['PROGRESS_RECID'];
+                                            }
+                                            if (!empty($insu['PROGRESS_RECID_HIST'])) {
+                                                $insu_hist_recids[] = $insu['PROGRESS_RECID_HIST'];
+                                            }
+                                        }
+                                        ?>
+
+                                        <!-- Campos hidden simplificados -->
+                                        <?php foreach ($proc_recids as $recid): ?>
+                                            <input type="hidden" name="pacotes[<?= $idx ?>][progress_recid_proc][]" value="<?= htmlspecialchars($recid) ?>">
+                                        <?php endforeach; ?>
+
+                                        <?php foreach ($proc_hist_recids as $recid): ?>
+                                            <input type="hidden" name="pacotes[<?= $idx ?>][progress_recid_hist_proc][]" value="<?= htmlspecialchars($recid) ?>">
+                                        <?php endforeach; ?>
+
+                                        <?php foreach ($insu_recids as $recid): ?>
+                                            <input type="hidden" name="pacotes[<?= $idx ?>][progress_recid_insu][]" value="<?= htmlspecialchars($recid) ?>">
+                                        <?php endforeach; ?>
+
+                                        <?php foreach ($insu_hist_recids as $recid): ?>
+                                            <input type="hidden" name="pacotes[<?= $idx ?>][progress_recid_hist_insu][]" value="<?= htmlspecialchars($recid) ?>">
+                                        <?php endforeach; ?>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+                <?php else: ?>
+                <div class="alert alert-warning text-center">
+                    <i class="bi bi-exclamation-triangle"></i> Nenhuma ocorrência de pacote encontrada.
+                </div>
+                <?php endif; ?>
+            </div>
         </div>
 
-        <!-- Tabela de Insumos -->
-        <h4 class="mt-4 text-center">Tabela de Insumos</h4>
-        <table class="table table-bordered table-striped">
-            <thead class="table-dark">
-                <tr>
-                    <th>Documento</th>
-                    <th>Prestador</th>
-                    <th>Transação</th>
-                    <th>Série</th>
-                    <th>Nº Processo</th>
-                    <th>Sequência</th>
-                    <th>Período Ref</th>
-                    <th>Ano Ref</th>
-                    <th>Pacote</th>
-                    <th>Insumo</th>
-                    <!-- <th>Valor Insumo</th> -->
-                    <th>Valor Cobrado</th>
-                    <th>Valor Glosado</th>
-                    <th>% Individual</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if (!empty($insumos)): ?>
-                    <?php foreach ($insumos as $insu): ?>
-                        <tr>
-                            <td><?= htmlspecialchars($insu['DOC'] ?? '') ?></td>
-                            <td><?= htmlspecialchars($insu['CD_PRESTADOR'] ?? '') ?></td>
-                            <td><?= htmlspecialchars($insu['CD_TRANSACAO'] ?? '') ?></td>
-                            <td><?= htmlspecialchars($insu['SERIE'] ?? '') ?></td>
-                            <td><?= htmlspecialchars($insu['NR_PROCESSO'] ?? '') ?></td>
-                            <td><?= htmlspecialchars($insu['SEQ'] ?? '') ?></td>
-                            <td><?= htmlspecialchars($insu['NR_PERREF'] ?? '') ?></td>
-                            <td><?= htmlspecialchars($insu['DT_ANOREF'] ?? '') ?></td>
-                            <td><?= htmlspecialchars($insu['CD_PACOTE'] ?? '') ?></td>
-                            <td><?= htmlspecialchars($insu['CD_INSUMO'] ?? '') ?></td>
-                            <td><?= htmlspecialchars($insu['VL_COBRADO'] ?? '') ?></td>
-                            <td><?= htmlspecialchars($insu['VL_GLOSADO'] ?? '') ?></td>
-                            <td>
-                                <input type="text" name="insumos[porcentagem][]" class="form-control text-center" maxlength="3" pattern="\d*" style="width: 80px;" oninput="validarValor(this)">
-                            </td>
-                            <!-- Hidden fields -->
-                            <input type="hidden" name="insumos[doc][]" value="<?= $proc['DOC'] ?>">
-                            <input type="hidden" name="insumos[prestador][]" value="<?= $proc['CD_PRESTADOR'] ?>">
-                            <input type="hidden" name="insumos[perref][]" value="<?= $proc['NR_PERREF'] ?>">
-                            <input type="hidden" name="insumos[anoref][]" value="<?= $proc['DT_ANOREF'] ?>">
-                            <input type="hidden" name="insumos[pacote][]" value="<?= $proc['CD_PACOTE'] ?>">
-                            <input type="hidden" name="insumos[seq][]" value="<?= $proc['SEQ'] ?>">
-                            <input type="hidden" name="insumos[processo][]" value="<?= $proc['NR_PROCESSO'] ?>">
-                        </tr>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <tr>
-                        <td colspan="12" class="text-center">Nenhum insumo encontrado.</td>
-                    </tr>
-                <?php endif; ?>
-            </tbody>
-        </table>
-    </div>
+        <?php if (!empty($pacotesOcorrencia)): ?>
+        <div class="text-center mb-5">
+            <button type="button" id="btnAtualizarPacotes" class="btn btn-success btn-lg">
+                <i class="bi bi-check-circle"></i> Atualizar Pacotes (Aplicar a procedimentos e insumos)
+            </button>
+        </div>
+        <?php endif; ?>
 
-    <div class="text-center">
-        <button 
-           id="btnEdtPorcent" class="btn btn-success mb-5 " data-bs-toggle="modal" data-bs-target="#modalPorcentagem">
-            Editar Porcentagem
-        </button>
-    </div>
-
-    <?php 
-        if(isset($_SESSION['retornoUpdatePorcentagem'])){
-           ?>
-            <script>
-                //! mensagem de erro sweet alert
-                document.addEventListener('DOMContentLoaded', function() {
-                    Swal.fire({
-                        icon: '<?php echo ($_SESSION['retornoUpdatePorcentagem']['type']); ?>',
-                        title: '',
-                        text: '<?php echo addslashes($_SESSION['retornoUpdatePorcentagem']['message']); ?>',
-                        timer: 2000,
-                        timerProgressBar: true,
-                        showConfirmButton: false
-                    });
-                });
-            </script>
-           <?php
-           unset($_SESSION['retornoUpdatePorcentagem']);
-        }
-    ?>
-    
-<!-- //! VERIFICA CAMPO DE % MANUAL -->
-<script>
-    function validarValor(input) {
-  // 1. Remove qualquer caractere que não seja um dígito (0-9)
-  let valorLimpo = input.value.replace(/\D/g, '');
-
-  // 2. Converte para número inteiro para fazer a validação de limite
-  let valor = parseInt(valorLimpo, 10);
-
-  // 3. Verifica se é maior que 100
-  if (valor > 100) {
-    valorLimpo = '100';
-  }
-
-  // 4. Atualiza o valor do input
-  input.value = valorLimpo;
-}
-
-</script>
-
-    <!-- //! modal alterar valor porcentagem -->
-    <div class="modal fade" id="modalPorcentagem" tabindex="-1" aria-labelledby="modalPorcentagem" aria-hidden="true" data-bs-backdrop="static">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" >Alterar Porcentagem Documento</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="formAttPorcentagem" action="update_porcentagemDoc.php" method="POST">
-                        <!-- Procedimentos -->
-                        <?php foreach ($procedimentos as $proc): ?>
-                            <input type="hidden" name="procedimentos[doc][]" value="<?= htmlspecialchars($proc['DOC'] ?? '') ?>">
-                            <input type="hidden" name="procedimentos[prestador][]" value="<?= htmlspecialchars($proc['CD_PRESTADOR'] ?? '') ?>">
-                            <input type="hidden" name="procedimentos[perref][]" value="<?= htmlspecialchars($proc['NR_PERREF'] ?? '') ?>">
-                            <input type="hidden" name="procedimentos[anoref][]" value="<?= htmlspecialchars($proc['DT_ANOREF'] ?? '') ?>">
-                            <input type="hidden" name="procedimentos[pacote][]" value="<?= htmlspecialchars($proc['CD_PACOTE'] ?? '') ?>">
-                            <input type="hidden" name="procedimentos[seq][]" value="<?= htmlspecialchars($proc['SEQ'] ?? '') ?>">
-                        <?php endforeach; ?>
-
-                        <!-- Insumos -->
-                        <?php foreach ($insumos as $insu): ?>
-                            <input type="hidden" name="insumos[doc][]" value="<?= htmlspecialchars($insu['DOC'] ?? '') ?>">
-                            <input type="hidden" name="insumos[prestador][]" value="<?= htmlspecialchars($insu['CD_PRESTADOR'] ?? '') ?>">
-                            <input type="hidden" name="insumos[perref][]" value="<?= htmlspecialchars($insu['NR_PERREF'] ?? '') ?>">
-                            <input type="hidden" name="insumos[anoref][]" value="<?= htmlspecialchars($insu['DT_ANOREF'] ?? '') ?>">
-                            <input type="hidden" name="insumos[pacote][]" value="<?= htmlspecialchars($insu['CD_PACOTE'] ?? '') ?>">
-                            <input type="hidden" name="insumos[seq][]" value="<?= htmlspecialchars($insu['SEQ'] ?? '') ?>">
-                        <?php endforeach; ?>
-
-
-                        <div class="mb-3 form-floating-label">
-                            <input id="porcentagem" type="text" class="form-control inputback" name="porcentagem" placeholder=" " required maxlength="3" >
-                            <label for="porcentagem">Valor Porcentagem *</label>
-                        </div>
-                        <div class="text-center">
-                            <button id="btnAlterar" class="btn btn-success mb-4 mt-4">Alterar</button>
-                        </div>
-                    </form>
+        <!-- Tabela de Procedimentos -->
+        <?php if (!empty($procedimentos)): ?>
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0"><i class="bi bi-clipboard-pulse"></i> Tabela de Procedimentos (<?= count($procedimentos) ?> registros)</h4>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-bordered align-middle table-sm mb-0 table-striped">
+                        <thead class="table-dark text-center">
+                            <tr>
+                                <th style="width: 12%">Pacote</th>
+                                <th style="width: 12%">Documento</th>
+                                <th style="width: 12%">Nº Processo</th>
+                                <th style="width: 8%">Sequência</th>
+                                <th style="width: 12%">Pacote Ocorrência</th>
+                                <th style="width: 22%">Valor Cobrado</th>
+                                <th style="width: 22%">Valor Glosado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($procedimentos as $proc): ?>
+                                <tr>
+                                    <td style="font-weight:bold"><?= htmlspecialchars($proc['CD_PACOTE'] ?? '') ?></td>
+                                    <td><?= htmlspecialchars($proc['NR_DOC_ORIGINAL'] ?? '') ?></td>
+                                    <td><?= htmlspecialchars($proc['NR_PROCESSO'] ?? '') ?></td>
+                                    <td><?= htmlspecialchars($proc['NR_SEQ_DIGITACAO'] ?? '') ?></td>
+                                    <td><?= htmlspecialchars($proc['PACOTE_OCORRENCIA'] ?? '') ?></td>
+                                    <td class="valor valor-small">R$ <?= formatarValorFinal($proc['VL_COBRADO'] ?? '') ?></td>
+                                    <td class="valor valor-small">R$ <?= formatarValorFinal($proc['VL_GLOSADO'] ?? '') ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-    </div>
+        <?php else: ?>
+        <div class="alert alert-info text-center">
+            <i class="bi bi-info-circle"></i> Nenhum procedimento encontrado.
+        </div>
+        <?php endif; ?>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Tabela de Insumos -->
+        <?php if (!empty($insumos)): ?>
+        <div class="card mb-4">
+            <div class="card-header bg-success text-white">
+                <h4 class="mb-0"><i class="bi bi-box-seam"></i> Tabela de Insumos (<?= count($insumos) ?> registros)</h4>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-bordered align-middle table-sm mb-0 table-striped">
+                        <thead class="table-dark text-center">
+                            <tr>
+                                <th style="width: 12%">Pacote</th>
+                                <th style="width: 12%">Documento</th>
+                                <th style="width: 12%">Nº Processo</th>
+                                <th style="width: 8%">Sequência</th>
+                                <th style="width: 12%">Pacote Ocorrência</th>
+                                <th style="width: 22%">Valor Cobrado</th>
+                                <th style="width: 22%">Valor Glosado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($insumos as $insu): ?>
+                                <tr>
+                                    <td style="font-weight:bold"><?= htmlspecialchars($insu['CD_PACOTE'] ?? '') ?></td>
+                                    <td><?= htmlspecialchars($insu['NR_DOC_ORIGINAL'] ?? '') ?></td>
+                                    <td><?= htmlspecialchars($insu['NR_PROCESSO'] ?? '') ?></td>
+                                    <td><?= htmlspecialchars($insu['NR_SEQ_DIGITACAO'] ?? '') ?></td>
+                                    <td><?= htmlspecialchars($insu['PACOTE_OCORRENCIA'] ?? '') ?></td>
+                                    <td class="valor valor-small">R$ <?= formatarValorFinal($insu['VL_COBRADO'] ?? '') ?></td>
+                                    <td class="valor valor-small">R$ <?= formatarValorFinal($insu['VL_GLOSADO'] ?? '') ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <?php else: ?>
+        <div class="alert alert-info text-center">
+            <i class="bi bi-info-circle"></i> Nenhum insumo encontrado.
+        </div>
+        <?php endif; ?>
+
+    </form>
+</div>
+
+<?php 
+if(isset($_SESSION['retornoUpdatePorcentagem'])): ?>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    Swal.fire({
+        icon: '<?= $_SESSION['retornoUpdatePorcentagem']['type']; ?>',
+        title: '<?= $_SESSION['retornoUpdatePorcentagem']['type'] === 'success' ? 'Sucesso!' : 'Erro!'; ?>',
+        text: '<?= addslashes($_SESSION['retornoUpdatePorcentagem']['message']); ?>',
+        timer: 3000,
+        timerProgressBar: true,
+        showConfirmButton: false
+    });
+});
+</script>
+<?php unset($_SESSION['retornoUpdatePorcentagem']); endif; ?>
+
+<script>
+// Função de validação do percentual
+function validarPercentualPacote(input) {
+    // Permite digitação livre de números, vírgula e ponto
+    let valor = input.value;
     
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('loadingOverlay').style.display = 'none'; 
+    // Remove caracteres inválidos, mantendo apenas números, vírgula e ponto
+    valor = valor.replace(/[^\d,.]/g, '');
+    
+    // Permite apenas uma vírgula ou ponto decimal
+    const hasComma = valor.includes(',');
+    const hasDot = valor.includes('.');
+    
+    if (hasComma && hasDot) {
+        // Se tem ambos, remove o último adicionado
+        const lastComma = valor.lastIndexOf(',');
+        const lastDot = valor.lastIndexOf('.');
+        if (lastComma > lastDot) {
+            valor = valor.replace('.', '');
+        } else {
+            valor = valor.replace(',', '');
+        }
+    }
+    
+    // Substitui vírgula por ponto para validação numérica
+    const valorNumerico = valor.replace(',', '.');
+    
+    // Verifica se é um número válido
+    const num = parseFloat(valorNumerico);
+    
+    // Se estiver vazio ou não for número, apenas mantém o valor limpo
+    if (valor === '' || isNaN(num)) {
+        input.value = valor;
+        input.classList.remove('is-invalid', 'is-valid');
+        return;
+    }
+    
+    // Validação do range
+    if (num < 0) {
+        input.value = '0';
+        input.classList.add('is-invalid');
+        input.classList.remove('is-valid');
+        return;
+    }
+    
+    if (num > 100) {
+        input.value = '100';
+        input.classList.add('is-invalid');
+        input.classList.remove('is-valid');
+        return;
+    }
+    
+    // Mantém o valor como o usuário digitou (sem formatação automática)
+    input.value = valor;
+    input.classList.remove('is-invalid');
+    input.classList.add('is-valid');
+}
 
-            const form = document.getElementById('formAttPorcentagem');
-            const inputPorcentagem = document.getElementById('porcentagem');
+// Formatação ao perder o foco
+function formatarPercentualAoPerderFoco(input) {
+    const valor = input.value.replace(',', '.');
+    const num = parseFloat(valor);
+    
+    if (!isNaN(num) && num >= 0 && num <= 100) {
+        // Formata com 2 casas decimais apenas ao sair do campo
+        input.value = num.toFixed(2).replace('.', ',');
+    }
+}
 
-            form.addEventListener('submit', function (event) {
-                const valor = inputPorcentagem.value.trim();
+// Adicionar eventos aos inputs quando a página carregar
+document.addEventListener('DOMContentLoaded', function() {
+    const inputsPercentual = document.querySelectorAll('input[name*="[porcentagem]"]');
+    
+    inputsPercentual.forEach(input => {
+        // Validação durante a digitação
+        input.addEventListener('input', function() {
+            validarPercentualPacote(this);
+        });
+        
+        // Formatação ao perder o foco
+        input.addEventListener('blur', function() {
+            formatarPercentualAoPerderFoco(this);
+        });
+    });
+});
 
-                //* Verifica se o campo está vazio
-                if (valor === '') {
-                    event.preventDefault(); //* Impede o envio do formulário
-                    return;
-                }
+// Botão de atualizar pacotes - VERSÃO SIMPLIFICADA
+document.getElementById('btnAtualizarPacotes')?.addEventListener('click', function() {
+    const form = document.getElementById('formPacotes');
+    const formData = new FormData(form);
+    
+    // Verificar se há pelo menos uma porcentagem válida
+    let hasValidPercentage = false;
+    const porcentagemInputs = document.querySelectorAll('input[name*="[porcentagem]"]');
+    
+    porcentagemInputs.forEach(input => {
+        const valor = input.value.replace(',', '.').trim();
+        if (valor !== '' && !isNaN(parseFloat(valor)) && parseFloat(valor) > 0) {
+            hasValidPercentage = true;
+        }
+    });
+    
+    if (!hasValidPercentage) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Nada para atualizar',
+            text: 'Informe pelo menos uma porcentagem válida (maior que 0) antes de atualizar.',
+            timer: 3000,
+            showConfirmButton: true
+        });
+        return;
+    }
 
-                if (!/^\d+$/.test(valor)) { //* Verifica se o valor é numérico
-                    alert('Por favor, insira apenas números.');
-                    event.preventDefault(); //* Impede o envio do formulário
-                    return;
-                }
+    // Mostrar loading
+    document.getElementById('msgLoader').innerText = "Atualizando pacotes, aguarde...";
+    document.getElementById('loadingOverlay').style.display = 'flex';
+    this.disabled = true;
 
-                document.getElementById('msgLoader').innerText = "Editando valores, aguarde por favor";
-                document.getElementById('loadingOverlay').style.display = 'flex';
+    // Debug: mostrar dados que serão enviados
+    console.log('=== DADOS ENVIADOS ===');
+    for (const [key, val] of formData.entries()) {
+        console.log(key + ':', val);
+    }
 
-                document.getElementById('btnAlterar').disabled = true; //* desabilita botão alterar
-
-           
-                document.addEventListener('keydown', function (e) {
-                    if (e.key === 'Escape' || e.keyCode === 27) {
-                        e.preventDefault(); // Impede o fechamento do modal ao pressionar ESC
-                        return false; // Impede que o evento continue e feche o modal
-                    }
-                });
-
-
+    fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        credentials: 'same-origin'
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erro na resposta do servidor: ' + response.status);
+        }
+        return response.json();
+    })
+    .then(res => {
+        document.getElementById('loadingOverlay').style.display = 'none';
+        document.getElementById('btnAtualizarPacotes').disabled = false;
+        
+        if (res.error) {
+            Swal.fire({ 
+                icon: 'error', 
+                title: 'Erro na atualização', 
+                text: res.message || 'Erro desconhecido ao atualizar os pacotes.',
+                confirmButtonText: 'OK'
             });
+        } else {
+            Swal.fire({ 
+                icon: 'success', 
+                title: 'Atualização concluída!', 
+                text: res.message || 'Pacotes atualizados com sucesso.',
+                timer: 2000,
+                showConfirmButton: false
+            }).then(() => {
+                location.reload();
+            });
+        }
+    })
+    .catch(err => {
+        document.getElementById('loadingOverlay').style.display = 'none';
+        document.getElementById('btnAtualizarPacotes').disabled = false;
+        Swal.fire({ 
+            icon: 'error', 
+            title: 'Erro de comunicação', 
+            text: 'Falha ao comunicar com o servidor: ' + err.message,
+            confirmButtonText: 'OK'
+        });
+        console.error('Erro:', err);
+    });
+});
+</script>
 
-        })
-    </script>
-    
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

@@ -7,9 +7,16 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 
 $codPrest   = (int) $_POST['codPrest'];
 $numDoc     = (int) $_POST['numDoc'];
-$numPacote  = (int) $_POST['numPacote'];
 $periodoRef = (int) $_POST['periodoRef'];
 $dtAnoRef   = (int) $_POST['dtAnoRef'];
+
+$_SESSION['parametros_porcentagem'] = [
+    'codPrest' => $_POST['codPrest'] ?? '',
+    'numDoc' => $_POST['numDoc'] ?? '',
+    'periodoRef' => $_POST['periodoRef'] ?? '',
+    'dtAnoRef' => $_POST['dtAnoRef'] ?? ''
+];
+
 
 require_once "../../config/AW00DB.php";
 require_once "../../config/oracle.class.php";
@@ -25,175 +32,197 @@ if (!$conn) {
     exit;
 }
 
-// Configurar codificação
 oci_set_client_info($conn, 'UTF-8');
 
-    //! GET PERCENTUAL PROCEDIMENTO
-    $sqlProc = "SELECT P.NR_PROCESSO, P.NR_DOC_ORIGINAL DOC, P.CD_PRESTADOR, P.CD_TRANSACAO, P.NR_SERIE_DOC_ORIGINAL SERIE, P.NR_SEQ_DIGITACAO SEQ, P.NR_PERREF, P.DT_ANOREF, P.CD_PACOTE,
-       P.PC_APLICADO, P.DEC_11, P.DEC_12, P.DEC_13, P.VL_PRINCIPAL, P.VL_AUXILIAR, P.VL_COBRADO, PP.VL_PROCEDIMENTO AS VL_PACOTE,
-       P.CD_CLASSE_ERRO CL_ERRO, P.CD_COD_GLO GLOSA, P.VL_GLOSADO, P.VL_REAL_GLOSADO, P.VL_BASE_VALOR_SISTEMA, P.VL_REAL_PAGO
-   FROM gp.MOVIPROC P 
-       INNER JOIN gp.PACPROCE PP ON PP.CD_PACOTE  = P.CD_PACOTE
-       WHERE P.NR_DOC_ORIGINAL = :numdoc 
-         AND P.NR_PERREF       = :periodoref
-         AND P.DT_ANOREF       = :anoref
-         AND P.CD_PACOTE       = :numpacote 
-        --  AND PP.VL_PROCEDIMENTO = (SELECT E.VL_PROCEDIMENTO FROM gp.PACPROCE E WHERE E.CD_PACOTE = :numpacote   AND E.DT_LIMITE > TRUNC(SYSDATE))
-         AND PP.VL_PROCEDIMENTO = (
-          SELECT MAX(E.VL_PROCEDIMENTO)
-          FROM gp.PACPROCE E 
-          WHERE E.CD_PACOTE = :numpacote AND E.DT_LIMITE > TRUNC(SYSDATE)
-        )
-         AND P.CD_PRESTADOR    = :codprest ";
+// ---------------------------------------------------------------
+// NOVO SELECT ÚNICO
+// ---------------------------------------------------------------
+$sql = "
+WITH params AS (
+  SELECT 
+    :cd_prestador AS cd_prestador,
+    :nr_perref AS nr_perref,
+    :dt_anoref AS dt_anoref,
+    :nr_doc AS nr_doc
+  FROM dual
+),
+pacotes AS (
+  SELECT DISTINCT 
+         NVL(P.CD_PACOTE, I.CD_PACOTE) AS CD_PACOTE
+  FROM GP.DOCRECON D
+  LEFT JOIN GP.MOVIPROC P
+    ON P.NR_DOC_ORIGINAL       = D.NR_DOC_ORIGINAL
+   AND P.NR_DOC_SISTEMA        = D.NR_DOC_SISTEMA
+   AND P.CD_TRANSACAO          = D.CD_TRANSACAO
+   AND P.NR_SERIE_DOC_ORIGINAL = D.NR_SERIE_DOC_ORIGINAL
+  LEFT JOIN GP.MOV_INSU I
+    ON I.NR_DOC_ORIGINAL       = D.NR_DOC_ORIGINAL
+   AND I.NR_DOC_SISTEMA        = D.NR_DOC_SISTEMA
+   AND I.CD_TRANSACAO          = D.CD_TRANSACAO
+   AND I.NR_SERIE_DOC_ORIGINAL = D.NR_SERIE_DOC_ORIGINAL
+  JOIN GP.params prm ON 1=1
+  WHERE D.CD_PRESTADOR_PRINCIPAL = prm.cd_prestador
+    AND D.NR_PERREF = prm.nr_perref
+    AND D.DT_ANOREF = prm.dt_anoref
+    AND D.NR_DOC_ORIGINAL = prm.nr_doc
+    AND NVL(P.CD_PACOTE, I.CD_PACOTE) <> 0
+),
+lines AS (
+  SELECT 
+    D.NR_DOC_ORIGINAL,
+    P.CD_PACOTE,
+    P.NR_PROCESSO,
+    P.NR_SEQ_DIGITACAO,
+    P.DT_DIGITACAO,
+    P.HR_DIGITACAO,
+    P.PROGRESS_RECID,
+    HP.PROGRESS_RECID AS PROGRESS_RECID_HIST,
+    P.VL_COBRADO,
+    P.VL_GLOSADO,
+    'P' AS origem,
+    TO_DATE(TO_CHAR(P.DT_DIGITACAO, 'YYYY-MM-DD') || ' ' || 
+            LPAD(FLOOR(P.HR_DIGITACAO/100),4,'0'), 'YYYY-MM-DD HH24MI') AS DT_HR_DIG,
+    FLOOR(P.HR_DIGITACAO/100)*3600 + MOD(P.HR_DIGITACAO,100)*60 AS HR_SEGUNDOS
+  FROM GP.DOCRECON D
+  LEFT JOIN GP.MOVIPROC P
+    ON P.NR_DOC_ORIGINAL       = D.NR_DOC_ORIGINAL
+   AND P.NR_DOC_SISTEMA        = D.NR_DOC_SISTEMA
+   AND P.CD_TRANSACAO          = D.CD_TRANSACAO
+   AND P.NR_SERIE_DOC_ORIGINAL = D.NR_SERIE_DOC_ORIGINAL
+  LEFT JOIN GP.HISTOR_MOVIMEN_PROCED HP
+    ON HP.NR_DOC_ORIGINAL       = P.NR_DOC_ORIGINAL
+   AND HP.NR_DOC_SISTEMA        = P.NR_DOC_SISTEMA
+   AND HP.CD_TRANSACAO          = P.CD_TRANSACAO
+   AND HP.NR_SERIE_DOC_ORIGINAL = P.NR_SERIE_DOC_ORIGINAL
+   AND HP.NR_PROCESSO           = P.NR_PROCESSO
+   AND HP.NR_SEQ_DIGITACAO      = P.NR_SEQ_DIGITACAO
+  JOIN GP.params prm ON 1 = 1
+  JOIN GP.pacotes pc ON pc.CD_PACOTE = P.CD_PACOTE
+  WHERE D.CD_PRESTADOR_PRINCIPAL = prm.cd_prestador
+    AND D.NR_PERREF = prm.nr_perref
+    AND D.DT_ANOREF = prm.dt_anoref
+    AND D.NR_DOC_ORIGINAL = prm.nr_doc
 
-    //! GET PERCENTUAL INSUMO
-    $sqlInsu = "SELECT I.NR_PROCESSO, I.NR_DOC_ORIGINAL DOC, I.CD_PRESTADOR, I.CD_TRANSACAO, I.NR_SERIE_DOC_ORIGINAL SERIE, I.NR_SEQ_DIGITACAO SEQ, I.NR_PERREF, I.DT_ANOREF, I.CD_PACOTE, I.CD_INSUMO,
-        I.PC_APLICADO, I.VL_INSUMO, I.VL_COBRADO, E.VL_INSUMO AS VL_PACOTE,
-        I.CD_CLASSE_ERRO CL_ERRO, I.CD_COD_GLO GLOSA, I.VL_GLOSADO, I.VL_REAL_GLOSADO 
-    FROM gp.PACINSUM E
-    INNER JOIN gp.MOV_INSU I ON I.CD_PACOTE = E.CD_PACOTE AND I.CD_INSUMO = E.CD_INSUMO
-    WHERE I.NR_DOC_ORIGINAL = :numdoc 
-        AND I.NR_PERREF       = :periodoref
-        AND I.DT_ANOREF       = :anoref
-        AND E.CD_PACOTE       = :numpacote 
-        AND E.CD_INSUMO       = I.CD_INSUMO 
-        AND E.DT_LIMITE > TRUNC(SYSDATE)
-        AND I.CD_PRESTADOR    = :codprest ";
+  UNION ALL
 
-// Bind de parâmetros
+  SELECT 
+    D.NR_DOC_ORIGINAL,
+    I.CD_PACOTE,
+    I.NR_PROCESSO,
+    I.NR_SEQ_DIGITACAO,
+    I.DT_DIGITACAO,
+    I.HR_DIGITACAO,
+    I.PROGRESS_RECID,
+    HI.PROGRESS_RECID AS PROGRESS_RECID_HIST,
+    I.VL_COBRADO,
+    I.VL_GLOSADO,
+    'I' AS origem,
+    TO_DATE(TO_CHAR(I.DT_DIGITACAO, 'YYYY-MM-DD') || ' ' || 
+            LPAD(FLOOR(I.HR_DIGITACAO/100),4,'0'), 'YYYY-MM-DD HH24MI') AS DT_HR_DIG,
+    FLOOR(I.HR_DIGITACAO/100)*3600 + MOD(I.HR_DIGITACAO,100)*60 AS HR_SEGUNDOS
+  FROM GP.DOCRECON D
+  LEFT JOIN GP.MOV_INSU I
+    ON I.NR_DOC_ORIGINAL       = D.NR_DOC_ORIGINAL
+   AND I.NR_DOC_SISTEMA        = D.NR_DOC_SISTEMA
+   AND I.CD_TRANSACAO          = D.CD_TRANSACAO
+   AND I.NR_SERIE_DOC_ORIGINAL = D.NR_SERIE_DOC_ORIGINAL
+  LEFT JOIN GP.HISTOR_MOVIMEN_INSUMO HI
+    ON HI.NR_DOC_ORIGINAL       = I.NR_DOC_ORIGINAL
+   AND HI.NR_DOC_SISTEMA        = I.NR_DOC_SISTEMA
+   AND HI.CD_TRANSACAO          = I.CD_TRANSACAO
+   AND HI.NR_SERIE_DOC_ORIGINAL = I.NR_SERIE_DOC_ORIGINAL
+   AND HI.NR_PROCESSO           = I.NR_PROCESSO
+   AND HI.NR_SEQ_DIGITACAO      = I.NR_SEQ_DIGITACAO
+  JOIN GP.params prm ON 1 = 1
+  JOIN GP.pacotes pc ON pc.CD_PACOTE = I.CD_PACOTE
+  WHERE D.CD_PRESTADOR_PRINCIPAL = prm.cd_prestador
+    AND D.NR_PERREF = prm.nr_perref
+    AND D.DT_ANOREF = prm.dt_anoref
+    AND D.NR_DOC_ORIGINAL = prm.nr_doc
+),
+numbered AS (
+  SELECT
+    l.*,
+    DENSE_RANK() OVER (
+      PARTITION BY l.NR_DOC_ORIGINAL
+      ORDER BY l.CD_PACOTE, l.DT_HR_DIG
+    ) AS PACOTE_OCORRENCIA_BASE
+  FROM lines l
+),
+ajustado AS (
+  SELECT 
+    n.*,
+    LAG(n.HR_SEGUNDOS) OVER (PARTITION BY n.CD_PACOTE ORDER BY n.DT_HR_DIG) AS HR_SEG_ANTERIOR,
+    LAG(n.PACOTE_OCORRENCIA_BASE) OVER (PARTITION BY n.CD_PACOTE ORDER BY n.DT_HR_DIG) AS PACOTE_OCORRENCIA_ANTERIOR
+  FROM numbered n
+),
+final AS (
+  SELECT
+    a.*,
+    CASE 
+      WHEN a.HR_SEG_ANTERIOR IS NULL THEN a.PACOTE_OCORRENCIA_BASE
+      WHEN ABS(a.HR_SEGUNDOS - a.HR_SEG_ANTERIOR) <= 50 THEN a.PACOTE_OCORRENCIA_ANTERIOR
+      ELSE a.PACOTE_OCORRENCIA_BASE
+    END AS PACOTE_OCORRENCIA
+  FROM ajustado a
+)
+SELECT
+  NR_DOC_ORIGINAL,
+  CD_PACOTE,
+  TO_CHAR(DT_DIGITACAO, 'DD/MM/YYYY') AS DT_DIGITACAO,
+  HR_DIGITACAO,
+  NR_PROCESSO,
+  NR_SEQ_DIGITACAO,
+  origem,
+  PROGRESS_RECID,
+  PROGRESS_RECID_HIST,
+  PACOTE_OCORRENCIA,
+  VL_COBRADO,
+  VL_GLOSADO
+FROM final
+ORDER BY PACOTE_OCORRENCIA, CD_PACOTE, DT_HR_DIG, origem
+";
+
 $bindings = [
-    ':numdoc'     => $numDoc,
-    ':periodoref' => $periodoRef,
-    ':anoref'     => $dtAnoRef,
-    ':numpacote'  => $numPacote,
-    ':codprest'   => $codPrest,
+    ':cd_prestador' => $codPrest,
+    ':nr_perref'    => $periodoRef,
+    ':dt_anoref'    => $dtAnoRef,
+    ':nr_doc'       => $numDoc
 ];
 
-//* Preparar consulta
-$stmtProc = executeQuery($conn, $sqlProc, $bindings);
-
-//* Inicializar array para armazenar os resultados
-$dataProc = [];
-
-while ($row = oci_fetch_assoc($stmtProc)) {
-    $dataProc[] = $row; // Adiciona cada linha ao array $dataProc
-}
-
-//* Verificar resultados
-// if (empty($dataProc)) {
-//     //! se não encontrar, retorna para dashboard com a mensagem
-//     $response = [
-//         'error' => true,
-//         'message' => 'Dados não encontrados',
-//         'procedimento' => '',
-//         'insumo' => ''
-//     ];
-//     $_SESSION['dadosValoresDoc'] = $response;
-//     header("Location: ../../dashboard.php");
-//     exit;
-
-// } else {
-
-    //! encontrando valores na tabela procedimento - busca na tabela insumo
-    //* Preparar consulta
-    $stmtInsu = executeQuery($conn, $sqlInsu, $bindings);
-
-    //* Inicializar array para armazenar os resultados
-    $dataInsu = [];
-
-    while ($row = oci_fetch_assoc($stmtInsu)) {
-        $dataInsu[] = $row; // Adiciona cada linha ao array $dataInsu
-    }
-        
-
-    //!VALIDA VALORES DO PACOTE
-    $sqlPac = "SELECT I.CD_PACOTE, A.TP_PROCEDIMENTO, A.CDPROCEDIMENTOCOMPLETO AS CODIGO, I.VL_PROCEDIMENTO, I.DT_INICIO_VIGENCIA, I.DT_FIM_VIGENCIA FROM gp.PACPROCE I 
-                INNER JOIN gp.AMBPROCE A ON A.CD_ESP_AMB = I.CD_ESP_AMB AND A.CD_GRUPO_PROC_AMB = I.CD_GRUPO_PROC_AMB AND A.CD_PROCEDIMENTO = I.CD_PROCEDIMENTO AND A.DV_PROCEDIMENTO = I.DV_PROCEDIMENTO
-                WHERE I.CD_PACOTE = :numpacote   AND I.DT_LIMITE > TRUNC(SYSDATE)
-                UNION
-                SELECT I.CD_PACOTE, TO_CHAR(I.CD_TIPO_INSUMO), I.CD_INSUMO AS CODIGO, I.VL_INSUMO, I.DT_INICIO_VIGENCIA, I.DT_FIM_VIGENCIA FROM gp.PACINSUM I 
-                WHERE I.CD_PACOTE = :numpacote   AND I.DT_LIMITE > TRUNC(SYSDATE)";
-
-    $bindingsPac = [
-        ':numpacote'  => $numPacote,
-    ];
-    
-    $stmtPacote = executeQuery($conn, $sqlPac, $bindingsPac);
-
-    //* Processa os resultados para verificar se os valores de DT_INICIO_VIGENCIA são iguais
-    $dtInicioVigencias = [];
-
-    while ($row = oci_fetch_assoc($stmtPacote)) {
-        $dtInicioVigencias[] = $row['DT_INICIO_VIGENCIA'];
-    }
-
-    //* Verifica se todos os valores de DT_INICIO_VIGENCIA são iguais
-    if (count(array_unique($dtInicioVigencias)) > 1) {
-        //* Os valores de DT_INICIO_VIGENCIA não são iguais
-        $response = [
-            'error' => true,
-            'message' => 'Início Vigência com datas diferentes. Verifique o pacote.',
-            'procedimento' => '',
-            'insumo' => '',
-        ];
-    } else {
-        //* Os valores de DT_INICIO_VIGENCIA são iguais
-        $response = [
-            'error' => false,
-            'message' => '',
-            'procedimento' => $dataProc,
-            'insumo' => $dataInsu,
-        ];
-    }
-
-
-    // Liberar recursos
-    oci_free_statement($stmtProc);
-    oci_free_statement($stmtInsu);
-    oci_close($conn);
-
-    $_SESSION['dadosValoresDoc'] = $response;
-    header("Location: index.php");
-     exit;
-
-// }
-
-function executeQuery($conn, $sql, $bindings) {
+try {
     $stmt = oci_parse($conn, $sql);
-    if (!$stmt) {
-        $e = oci_error($conn);
-        throw new Exception("Erro ao preparar a consulta: " . $e['message']);
-    }
-    foreach ($bindings as $key => $value) {
+    foreach ($bindings as $key => $val) {
         oci_bind_by_name($stmt, $key, $bindings[$key]);
     }
+
     if (!oci_execute($stmt)) {
         $e = oci_error($stmt);
-        if (strpos($e['message'], 'ORA-01427') !== false) {
-            // throw new Exception("Erro: A consulta retornou mais de uma linha onde era esperado apenas um resultado. Verifique os filtros utilizados.");
-        } else {
-            // throw new Exception("Erro ao executar a consulta: " . $e['message']);
-        }
+        throw new Exception("Erro ao executar consulta: " . $e['message']);
     }
-    return $stmt;
+
+    $data = [];
+    while ($row = oci_fetch_assoc($stmt)) {
+        $data[] = $row;
+    }
+
+    $_SESSION['dadosValoresDoc'] = [
+        'error' => false,
+        'message' => '',
+        'resultados' => $data
+    ];
+
+} catch (Exception $e) {
+    $_SESSION['dadosValoresDoc'] = [
+        'error' => true,
+        'message' => $e->getMessage(),
+        'resultados' => []
+    ];
 }
 
+// Libera recursos e redireciona
+oci_free_statement($stmt);
+oci_close($conn);
 
-// function executeQuery($conn, $sql, $bindings) {
-//     $stmt = oci_parse($conn, $sql);
-//     if (!$stmt) {
-//         $e = oci_error($conn);
-//         throw new Exception("Erro ao preparar a consulta: " . $e['message']);
-//     }
-//     foreach ($bindings as $key => $value) {
-//         oci_bind_by_name($stmt, $key, $bindings[$key]);
-//     }
-//     if (!oci_execute($stmt)) {
-//         $e = oci_error($stmt);
-//         throw new Exception("Erro ao executar a consulta: " . $e['message']);
-//     }
-//     return $stmt;
-// }
-
-
-
+header("Location: index.php");
+exit;
