@@ -355,7 +355,9 @@ foreach ($insumos as $insu) {
 </div>
 
 <?php 
-if(isset($_SESSION['retornoUpdatePorcentagem'])): ?>
+if(isset($_SESSION['retornoUpdatePorcentagem'])): 
+    $parametros = $_SESSION['parametros_porcentagem'] ?? [];
+?>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     Swal.fire({
@@ -365,10 +367,21 @@ document.addEventListener('DOMContentLoaded', function() {
         timer: 3000,
         timerProgressBar: true,
         showConfirmButton: false
+    }).then((result) => {
+        // Se foi um sucesso, simplesmente recarrega a página
+        <?php if ($_SESSION['retornoUpdatePorcentagem']['type'] === 'success'): ?>
+        setTimeout(() => {
+            window.location.reload();
+        }, 1000);
+        <?php endif; ?>
     });
 });
 </script>
-<?php unset($_SESSION['retornoUpdatePorcentagem']); endif; ?>
+<?php 
+// IMPORTANTE: Unset apenas após exibir a mensagem
+unset($_SESSION['retornoUpdatePorcentagem']); 
+endif; 
+?>
 
 <script>
 // Função de validação do percentual
@@ -488,12 +501,6 @@ document.getElementById('btnAtualizarPacotes')?.addEventListener('click', functi
     document.getElementById('loadingOverlay').style.display = 'flex';
     this.disabled = true;
 
-    // Debug: mostrar dados que serão enviados
-    console.log('=== DADOS ENVIADOS ===');
-    for (const [key, val] of formData.entries()) {
-        console.log(key + ':', val);
-    }
-
     fetch(form.action, {
         method: 'POST',
         body: formData,
@@ -517,15 +524,8 @@ document.getElementById('btnAtualizarPacotes')?.addEventListener('click', functi
                 confirmButtonText: 'OK'
             });
         } else {
-            Swal.fire({ 
-                icon: 'success', 
-                title: 'Atualização concluída!', 
-                text: res.message || 'Pacotes atualizados com sucesso.',
-                timer: 2000,
-                showConfirmButton: false
-            }).then(() => {
-                location.reload();
-            });
+            // Sucesso - recarrega a página imediatamente
+            window.location.reload();
         }
     })
     .catch(err => {

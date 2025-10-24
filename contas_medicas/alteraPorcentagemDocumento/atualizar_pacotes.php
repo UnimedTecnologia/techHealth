@@ -21,10 +21,11 @@ function executeUpdate($conn, $sql, $bindings, $entity) {
         oci_bind_by_name($stmt, $key, $value);
     }
 
-    // if (!oci_execute($stmt, OCI_COMMIT_ON_SUCCESS)) {
-    //     $e = oci_error($stmt);
-    //     throw new Exception("Erro ao executar update de $entity: " . htmlentities($e['message'], ENT_QUOTES));
-    // }
+    //! EXECUTAR UPDATES
+    if (!oci_execute($stmt, OCI_COMMIT_ON_SUCCESS)) {
+        $e = oci_error($stmt);
+        throw new Exception("Erro ao executar update de $entity: " . htmlentities($e['message'], ENT_QUOTES));
+    }
     
     $rows = oci_num_rows($stmt);
     oci_free_statement($stmt);
@@ -41,14 +42,9 @@ function calcularFatorMultiplicador($porcentagem) {
 function getProgressRecids($pacote, $campo) {
     $resultados = [];
     
-    // Debug: verificar estrutura do pacote
-    error_log("Buscando campo: $campo");
-    error_log("Estrutura do pacote: " . print_r($pacote, true));
-    
     // 1. Buscar como array direto (progress_recid_proc[])
     if (isset($pacote[$campo]) && is_array($pacote[$campo])) {
         $resultados = $pacote[$campo];
-        error_log("Encontrado como array direto: " . count($resultados) . " itens");
     }
     // 2. Buscar como campos indexados (progress_recid_proc[0], progress_recid_proc[1], etc.)
     else {
@@ -67,7 +63,6 @@ function getProgressRecids($pacote, $campo) {
     // 3. Buscar como valor único (quando há apenas um item)
     if (empty($resultados) && isset($pacote[$campo]) && !is_array($pacote[$campo]) && $pacote[$campo] !== '') {
         $resultados = [$pacote[$campo]];
-        error_log("Encontrado como valor único");
     }
     
     // Filtrar valores vazios, nulos ou não numéricos
@@ -75,21 +70,195 @@ function getProgressRecids($pacote, $campo) {
         return $item !== null && $item !== '' && is_numeric($item);
     }));
     
-    error_log("Resultados finais para $campo: " . count($resultados) . " - " . implode(', ', $resultados));
-    
     return $resultados;
 }
 
-// Função alternativa para debug detalhado
-function debugProgressRecids($pacote, $prefixo) {
-    $encontrados = [];
-    foreach ($pacote as $key => $value) {
-        if (strpos($key, $prefixo) === 0) {
-            $encontrados[$key] = $value;
-        }
+// Função para recarregar os dados atualizados do banco - CORRIGIDA
+function recarregarDadosAtualizados($codPrest, $numDoc, $periodoRef, $dtAnoRef) {
+    // Usar a mesma conexão global para evitar problemas
+    global $conn;
+    
+    if (!$conn) {
+        throw new Exception("Conexão com o banco não disponível");
     }
-    error_log("Campos encontrados com prefixo '$prefixo': " . print_r($encontrados, true));
-    return $encontrados;
+    
+    // Usar a mesma query do verificar_valores_documento.php
+    $sql = "
+    WITH params AS (
+      SELECT 
+        :cd_prestador AS cd_prestador,
+        :nr_perref AS nr_perref,
+        :dt_anoref AS dt_anoref,
+        :nr_doc AS nr_doc
+      FROM dual
+    ),
+    pacotes AS (
+      SELECT DISTINCT 
+             NVL(P.CD_PACOTE, I.CD_PACOTE) AS CD_PACOTE
+      FROM GP.DOCRECON D
+      LEFT JOIN GP.MOVIPROC P
+        ON P.NR_DOC_ORIGINAL       = D.NR_DOC_ORIGINAL
+       AND P.NR_DOC_SISTEMA        = D.NR_DOC_SISTEMA
+       AND P.CD_TRANSACAO          = D.CD_TRANSACAO
+       AND P.NR_SERIE_DOC_ORIGINAL = D.NR_SERIE_DOC_ORIGINAL
+      LEFT JOIN GP.MOV_INSU I
+        ON I.NR_DOC_ORIGINAL       = D.NR_DOC_ORIGINAL
+       AND I.NR_DOC_SISTEMA        = D.NR_DOC_SISTEMA
+       AND I.CD_TRANSACAO          = D.CD_TRANSACAO
+       AND I.NR_SERIE_DOC_ORIGINAL = D.NR_SERIE_DOC_ORIGINAL
+      JOIN GP.params prm ON 1=1
+      WHERE D.CD_PRESTADOR_PRINCIPAL = prm.cd_prestador
+        AND D.NR_PERREF = prm.nr_perref
+        AND D.DT_ANOREF = prm.dt_anoref
+        AND D.NR_DOC_ORIGINAL = prm.nr_doc
+        AND NVL(P.CD_PACOTE, I.CD_PACOTE) <> 0
+    ),
+    lines AS (
+      SELECT 
+        D.NR_DOC_ORIGINAL,
+        P.CD_PACOTE,
+        P.NR_PROCESSO,
+        P.NR_SEQ_DIGITACAO,
+        P.DT_DIGITACAO,
+        P.HR_DIGITACAO,
+        P.PROGRESS_RECID,
+        HP.PROGRESS_RECID AS PROGRESS_RECID_HIST,
+        P.VL_COBRADO,
+        P.VL_GLOSADO,
+        'P' AS origem,
+        TO_DATE(TO_CHAR(P.DT_DIGITACAO, 'YYYY-MM-DD') || ' ' || 
+                LPAD(FLOOR(P.HR_DIGITACAO/100),4,'0'), 'YYYY-MM-DD HH24MI') AS DT_HR_DIG,
+        FLOOR(P.HR_DIGITACAO/100)*3600 + MOD(P.HR_DIGITACAO,100)*60 AS HR_SEGUNDOS
+      FROM GP.DOCRECON D
+      LEFT JOIN GP.MOVIPROC P
+        ON P.NR_DOC_ORIGINAL       = D.NR_DOC_ORIGINAL
+       AND P.NR_DOC_SISTEMA        = D.NR_DOC_SISTEMA
+       AND P.CD_TRANSACAO          = D.CD_TRANSACAO
+       AND P.NR_SERIE_DOC_ORIGINAL = D.NR_SERIE_DOC_ORIGINAL
+      LEFT JOIN GP.HISTOR_MOVIMEN_PROCED HP
+        ON HP.NR_DOC_ORIGINAL       = P.NR_DOC_ORIGINAL
+       AND HP.NR_DOC_SISTEMA        = P.NR_DOC_SISTEMA
+       AND HP.CD_TRANSACAO          = P.CD_TRANSACAO
+       AND HP.NR_SERIE_DOC_ORIGINAL = P.NR_SERIE_DOC_ORIGINAL
+       AND HP.NR_PROCESSO           = P.NR_PROCESSO
+       AND HP.NR_SEQ_DIGITACAO      = P.NR_SEQ_DIGITACAO
+      JOIN GP.params prm ON 1 = 1
+      JOIN GP.pacotes pc ON pc.CD_PACOTE = P.CD_PACOTE
+      WHERE D.CD_PRESTADOR_PRINCIPAL = prm.cd_prestador
+        AND D.NR_PERREF = prm.nr_perref
+        AND D.DT_ANOREF = prm.dt_anoref
+        AND D.NR_DOC_ORIGINAL = prm.nr_doc
+
+      UNION ALL
+
+      SELECT 
+        D.NR_DOC_ORIGINAL,
+        I.CD_PACOTE,
+        I.NR_PROCESSO,
+        I.NR_SEQ_DIGITACAO,
+        I.DT_DIGITACAO,
+        I.HR_DIGITACAO,
+        I.PROGRESS_RECID,
+        HI.PROGRESS_RECID AS PROGRESS_RECID_HIST,
+        I.VL_COBRADO,
+        I.VL_GLOSADO,
+        'I' AS origem,
+        TO_DATE(TO_CHAR(I.DT_DIGITACAO, 'YYYY-MM-DD') || ' ' || 
+                LPAD(FLOOR(I.HR_DIGITACAO/100),4,'0'), 'YYYY-MM-DD HH24MI') AS DT_HR_DIG,
+        FLOOR(I.HR_DIGITACAO/100)*3600 + MOD(I.HR_DIGITACAO,100)*60 AS HR_SEGUNDOS
+      FROM GP.DOCRECON D
+      LEFT JOIN GP.MOV_INSU I
+        ON I.NR_DOC_ORIGINAL       = D.NR_DOC_ORIGINAL
+       AND I.NR_DOC_SISTEMA        = D.NR_DOC_SISTEMA
+       AND I.CD_TRANSACAO          = D.CD_TRANSACAO
+       AND I.NR_SERIE_DOC_ORIGINAL = D.NR_SERIE_DOC_ORIGINAL
+      LEFT JOIN GP.HISTOR_MOVIMEN_INSUMO HI
+        ON HI.NR_DOC_ORIGINAL       = I.NR_DOC_ORIGINAL
+       AND HI.NR_DOC_SISTEMA        = I.NR_DOC_SISTEMA
+       AND HI.CD_TRANSACAO          = I.CD_TRANSACAO
+       AND HI.NR_SERIE_DOC_ORIGINAL = I.NR_SERIE_DOC_ORIGINAL
+       AND HI.NR_PROCESSO           = I.NR_PROCESSO
+       AND HI.NR_SEQ_DIGITACAO      = I.NR_SEQ_DIGITACAO
+      JOIN GP.params prm ON 1 = 1
+      JOIN GP.pacotes pc ON pc.CD_PACOTE = I.CD_PACOTE
+      WHERE D.CD_PRESTADOR_PRINCIPAL = prm.cd_prestador
+        AND D.NR_PERREF = prm.nr_perref
+        AND D.DT_ANOREF = prm.dt_anoref
+        AND D.NR_DOC_ORIGINAL = prm.nr_doc
+    ),
+    numbered AS (
+      SELECT
+        l.*,
+        DENSE_RANK() OVER (
+          PARTITION BY l.NR_DOC_ORIGINAL
+          ORDER BY l.CD_PACOTE, l.DT_HR_DIG
+        ) AS PACOTE_OCORRENCIA_BASE
+      FROM lines l
+    ),
+    ajustado AS (
+      SELECT 
+        n.*,
+        LAG(n.HR_SEGUNDOS) OVER (PARTITION BY n.CD_PACOTE ORDER BY n.DT_HR_DIG) AS HR_SEG_ANTERIOR,
+        LAG(n.PACOTE_OCORRENCIA_BASE) OVER (PARTITION BY n.CD_PACOTE ORDER BY n.DT_HR_DIG) AS PACOTE_OCORRENCIA_ANTERIOR
+      FROM numbered n
+    ),
+    final AS (
+      SELECT
+        a.*,
+        CASE 
+          WHEN a.HR_SEG_ANTERIOR IS NULL THEN a.PACOTE_OCORRENCIA_BASE
+          WHEN ABS(a.HR_SEGUNDOS - a.HR_SEG_ANTERIOR) <= 50 THEN a.PACOTE_OCORRENCIA_ANTERIOR
+          ELSE a.PACOTE_OCORRENCIA_BASE
+        END AS PACOTE_OCORRENCIA
+      FROM ajustado a
+    )
+    SELECT
+      NR_DOC_ORIGINAL,
+      CD_PACOTE,
+      TO_CHAR(DT_DIGITACAO, 'DD/MM/YYYY') AS DT_DIGITACAO,
+      HR_DIGITACAO,
+      NR_PROCESSO,
+      NR_SEQ_DIGITACAO,
+      origem,
+      PROGRESS_RECID,
+      PROGRESS_RECID_HIST,
+      PACOTE_OCORRENCIA,
+      VL_COBRADO,
+      VL_GLOSADO
+    FROM final
+    ORDER BY PACOTE_OCORRENCIA, CD_PACOTE, DT_HR_DIG, origem
+    ";
+    
+    $bindings = [
+        ':cd_prestador' => $codPrest,
+        ':nr_perref'    => $periodoRef,
+        ':dt_anoref'    => $dtAnoRef,
+        ':nr_doc'       => $numDoc
+    ];
+    
+    $stmt = oci_parse($conn, $sql);
+    if (!$stmt) {
+        throw new Exception("Erro ao preparar consulta para recarregar dados");
+    }
+    
+    foreach ($bindings as $key => $val) {
+        oci_bind_by_name($stmt, $key, $bindings[$key]);
+    }
+
+    if (!oci_execute($stmt)) {
+        $e = oci_error($stmt);
+        oci_free_statement($stmt);
+        throw new Exception("Erro ao executar consulta para recarregar dados: " . $e['message']);
+    }
+
+    $data = [];
+    while ($row = oci_fetch_assoc($stmt)) {
+        $data[] = $row;
+    }
+
+    oci_free_statement($stmt);
+    
+    return $data;
 }
 
 try {
@@ -98,10 +267,12 @@ try {
         throw new Exception("Nenhum dado recebido para atualização.");
     }
 
-    // Debug: verificar estrutura completa do POST
-    error_log("=== ESTRUTURA COMPLETA DO POST ===");
-    error_log(print_r($_POST, true));
-    error_log("=================================");
+    // Obter parâmetros da sessão para recarregar dados depois
+    $parametros = $_SESSION['parametros_porcentagem'] ?? [];
+    $codPrest = $parametros['codPrest'] ?? '';
+    $numDoc = $parametros['numDoc'] ?? '';
+    $periodoRef = $parametros['periodoRef'] ?? '';
+    $dtAnoRef = $parametros['dtAnoRef'] ?? '';
 
     // Obter ID do usuário logado
     $userId = $_SESSION['idusuario'] ?? 'sistema';
@@ -123,22 +294,10 @@ try {
     foreach ($_POST['pacotes'] as $idx => $pacote) {
         $results['summary']['total_ocorrencias']++;
         
-        // Debug detalhado para esta ocorrência
-        error_log("=== PROCESSANDO OCORRÊNCIA $idx ===");
-        error_log("Dados do pacote: " . print_r($pacote, true));
-        
         // Validar dados obrigatórios
         $porcentagem = floatval($pacote['porcentagem'] ?? 0);
         $cdPacote = $pacote['cd_pacote'] ?? '';
         $pacoteOcorrencia = $pacote['pacote_ocorrencia'] ?? '';
-        
-        error_log("Porcentagem: $porcentagem, CD_PACOTE: $cdPacote, OCORRENCIA: $pacoteOcorrencia");
-        
-        // Debug detalhado dos campos de progress_recid
-        debugProgressRecids($pacote, 'progress_recid_proc');
-        debugProgressRecids($pacote, 'progress_recid_hist_proc');
-        debugProgressRecids($pacote, 'progress_recid_insu');
-        debugProgressRecids($pacote, 'progress_recid_hist_insu');
         
         // Buscar progress_recids
         $progressRecidProc = getProgressRecids($pacote, 'progress_recid_proc');
@@ -161,8 +320,6 @@ try {
         if (empty($progressRecidProc) && empty($progressRecidHistProc) && 
             empty($progressRecidInsu) && empty($progressRecidHistInsu)) {
             
-            error_log("Nenhum progress_recid encontrado, tentando busca alternativa...");
-            
             // Buscar qualquer campo que contenha "progress_recid"
             $allProgressRecids = [];
             foreach ($pacote as $key => $value) {
@@ -179,11 +336,8 @@ try {
                 return $item !== null && $item !== '' && is_numeric($item);
             }));
             
-            error_log("Progress RECIDs encontrados na busca alternativa: " . count($allProgressRecids));
-            
             // Distribuir os recids encontrados (esta é uma aproximação)
             if (!empty($allProgressRecids)) {
-                // Como não sabemos a origem, distribuímos igualmente ou usamos alguma lógica
                 $progressRecidProc = $allProgressRecids;
                 $progressRecidHistProc = $allProgressRecids;
                 $progressRecidInsu = $allProgressRecids;
@@ -203,8 +357,6 @@ try {
             // 1. UPDATE gp.MOVIPROC usando progress_recid (Procedimentos)
             if (!empty($progressRecidProc)) {
                 $progressRecids = implode(',', array_map('intval', $progressRecidProc));
-                
-                error_log("Executando UPDATE MOVIPROC com RECIDs: $progressRecids");
                 
                 $sqlMoviproc = "
                     UPDATE gp.MOVIPROC P
@@ -231,15 +383,11 @@ try {
 
                 $rowsMoviproc = executeUpdate($conn, $sqlMoviproc, $bindingsMoviproc, "MOVIPROC");
                 $results['summary']['atualizados_moviproc'] += $rowsMoviproc;
-                
-                error_log("UPDATE MOVIPROC: $rowsMoviproc linhas afetadas");
             }
 
             // 2. UPDATE gp.HISTOR_MOVIMEN_PROCED usando progress_recid_hist (Histórico de Procedimentos)
             if (!empty($progressRecidHistProc)) {
                 $progressRecidsHist = implode(',', array_map('intval', $progressRecidHistProc));
-                
-                error_log("Executando UPDATE HISTOR_MOVIMEN_PROCED com RECIDs: $progressRecidsHist");
                 
                 $sqlHistorProc = "
                     UPDATE gp.HISTOR_MOVIMEN_PROCED P
@@ -270,15 +418,11 @@ try {
 
                 $rowsHistorProc = executeUpdate($conn, $sqlHistorProc, $bindingsHistorProc, "HISTOR_MOVIMEN_PROCED");
                 $results['summary']['atualizados_histor_proc'] += $rowsHistorProc;
-                
-                error_log("UPDATE HISTOR_MOVIMEN_PROCED: $rowsHistorProc linhas afetadas");
             }
 
             // 3. UPDATE gp.MOV_INSU usando progress_recid (Insumos)
             if (!empty($progressRecidInsu)) {
                 $progressRecidsInsu = implode(',', array_map('intval', $progressRecidInsu));
-                
-                error_log("Executando UPDATE MOV_INSU com RECIDs: $progressRecidsInsu");
                 
                 $sqlMovInsu = "
                     UPDATE gp.MOV_INSU P
@@ -302,15 +446,11 @@ try {
 
                 $rowsMovInsu = executeUpdate($conn, $sqlMovInsu, $bindingsMovInsu, "MOV_INSU");
                 $results['summary']['atualizados_mov_insu'] += $rowsMovInsu;
-                
-                error_log("UPDATE MOV_INSU: $rowsMovInsu linhas afetadas");
             }
 
             // 4. UPDATE gp.HISTOR_MOVIMEN_INSUMO usando progress_recid_hist (Histórico de Insumos)
             if (!empty($progressRecidHistInsu)) {
                 $progressRecidsHistInsu = implode(',', array_map('intval', $progressRecidHistInsu));
-                
-                error_log("Executando UPDATE HISTOR_MOVIMEN_INSUMO com RECIDs: $progressRecidsHistInsu");
                 
                 $sqlHistorInsu = "
                     UPDATE gp.HISTOR_MOVIMEN_INSUMO I
@@ -338,22 +478,13 @@ try {
 
                 $rowsHistorInsu = executeUpdate($conn, $sqlHistorInsu, $bindingsHistorInsu, "HISTOR_MOVIMEN_INSUMO");
                 $results['summary']['atualizados_histor_insu'] += $rowsHistorInsu;
-                
-                error_log("UPDATE HISTOR_MOVIMEN_INSUMO: $rowsHistorInsu linhas afetadas");
             }
 
-            $results['success'][] = "Ocorrência $pacoteOcorrencia (Pacote: $cdPacote) atualizada com $porcentagem% - " .
-                                   "PROC: " . count($progressRecidProc) . " recids, " .
-                                   "INSU: " . count($progressRecidInsu) . " recids, " .
-                                   "MOVIPROC: $rowsMoviproc, HISTOR_PROC: $rowsHistorProc, " .
-                                   "MOV_INSU: $rowsMovInsu, HISTOR_INSU: $rowsHistorInsu";
+            $results['success'][] = "Ocorrência $pacoteOcorrencia (Pacote: $cdPacote) atualizada com $porcentagem%";
 
         } catch (Exception $e) {
             $results['errors'][] = "Erro na ocorrência $pacoteOcorrencia (Pacote: $cdPacote): " . $e->getMessage();
-            error_log("ERRO: " . $e->getMessage());
         }
-        
-        error_log("=== FIM OCORRÊNCIA $idx ===");
     }
 
     // Verificar se houve algum sucesso
@@ -361,19 +492,42 @@ try {
         throw new Exception("Nenhum update foi bem-sucedido. Erros: " . implode('; ', $results['errors']));
     }
 
+    // 🔄 RECARREGAR DADOS ATUALIZADOS DO BANCO - COM TRY/CATCH SEGURO
+    $dadosRecarregados = false;
+    if (!empty($codPrest) && !empty($numDoc) && !empty($periodoRef) && !empty($dtAnoRef)) {
+        try {
+            $dadosAtualizados = recarregarDadosAtualizados($codPrest, $numDoc, $periodoRef, $dtAnoRef);
+            
+            // Atualizar a sessão com os novos dados
+            $_SESSION['dadosValoresDoc'] = [
+                'error' => false,
+                'message' => '',
+                'resultados' => $dadosAtualizados
+            ];
+            
+            $dadosRecarregados = true;
+            
+        } catch (Exception $e) {
+            // Não interrompe o processo principal se falhar ao recarregar
+            error_log("AVISO: Não foi possível recarregar os dados atualizados: " . $e->getMessage());
+        }
+    }
+
     // Preparar resposta
     $response = [
         'error' => false,
         'message' => sprintf(
             "Atualização concluída! %d ocorrências processadas. " .
-            "MOVIPROC: %d, HISTOR_PROC: %d, MOV_INSU: %d, HISTOR_INSU: %d",
+            "MOVIPROC: %d, HISTOR_PROC: %d, MOV_INSU: %d, HISTOR_INSU: %d" .
+            ($dadosRecarregados ? " (Dados recarregados)" : " (Dados não recarregados)"),
             $results['summary']['total_ocorrencias'],
             $results['summary']['atualizados_moviproc'],
             $results['summary']['atualizados_histor_proc'],
             $results['summary']['atualizados_mov_insu'],
             $results['summary']['atualizados_histor_insu']
         ),
-        'details' => $results
+        'details' => $results,
+        'dados_recarregados' => $dadosRecarregados
     ];
 
 } catch (Exception $e) {
@@ -381,7 +535,6 @@ try {
         'error' => true,
         'message' => $e->getMessage()
     ];
-    error_log("ERRO GERAL: " . $e->getMessage());
 }
 
 // Salvar mensagem na sessão para exibir na página
@@ -390,5 +543,6 @@ $_SESSION['retornoUpdatePorcentagem'] = [
     'message' => $response['message']
 ];
 
+// Garantir que apenas JSON seja retornado
 echo json_encode($response);
-?>
+exit;
