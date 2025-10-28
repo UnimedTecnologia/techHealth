@@ -362,6 +362,7 @@
       <?php include_once "modalRelatorioTitulo.php"; ?>
       <?php include_once "modalDePara.php"; ?>
       <?php include_once "modalAlterarStatusGuia.php"; ?>
+      <?php include_once "modalGuiasLocalIntercambio.php"; ?>
       
 
     <!-- Bootstrap JS -->

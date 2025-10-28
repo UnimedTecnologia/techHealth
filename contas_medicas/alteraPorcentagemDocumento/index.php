@@ -119,7 +119,7 @@ foreach ($insumos as $insu) {
     <p id="msgLoader" class="mt-2">Carregando</p>
 </div>
 
-<div class="container mt-4">
+<div class="container" style="margin-top:100px">
     <div class="d-flex align-items-center mb-4">
         <div>
             <button class="btn" onclick="location.href='../../dashboard.php'" style="background-color: #008e55; color: white;">
@@ -131,6 +131,8 @@ foreach ($insumos as $insu) {
         </div>
         <div style="width: 100px;"></div>
     </div>
+
+   
 
     <form id="formPacotes" action="atualizar_pacotes.php" method="POST">
         <?php 
