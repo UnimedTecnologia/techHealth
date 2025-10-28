@@ -85,20 +85,58 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
+    console.log('DOM Carregado - Iniciando script...');
+    
+    // Verifica se Bootstrap está disponível
+    if (typeof bootstrap === 'undefined') {
+        console.error('Bootstrap não foi carregado!');
+        // Carrega Bootstrap dinamicamente se não estiver disponível
+        loadBootstrap();
+        return;
+    }
+
+    // Inicializa o modal com tratamento de erro
+    let modal;
+    try {
+        const modalElement = document.getElementById('modalGuiasLocalIntercambio');
+        if (modalElement) {
+            modal = new bootstrap.Modal(modalElement);
+            console.log('Modal inicializado com sucesso');
+        } else {
+            console.error('Elemento modal não encontrado');
+        }
+    } catch (error) {
+        console.error('Erro ao inicializar modal:', error);
+    }
+
+    // Seu código original com melhor tratamento
     const container = document.getElementById("tagInputContainer");
     const input = document.getElementById("tagInput");
     const hiddenInput = document.getElementById("matriculaAutorizacao");
-    let tags = ["114000586", "114000562", "114000595", "114000563", "114000535"]; // valores padrão
+    
+    if (!container || !input || !hiddenInput) {
+        console.error('Elementos necessários não encontrados');
+        return;
+    }
+
+    let tags = ["114000586", "114000562", "114000595", "114000563", "114000535", "114000602", "114000616"];
 
     function renderTags() {
-        container.querySelectorAll(".tag").forEach(tag => tag.remove());
+        // Remove todas as tags existentes
+        const existingTags = container.querySelectorAll(".tag");
+        existingTags.forEach(tag => tag.remove());
+        
+        // Adiciona as novas tags
         tags.forEach((matr, index) => {
             const tagEl = document.createElement("div");
             tagEl.classList.add("tag");
             tagEl.innerHTML = `${matr} <button type="button" data-index="${index}">&times;</button>`;
             container.insertBefore(tagEl, input);
         });
+        
+        // Atualiza o input hidden
         hiddenInput.value = tags.join(",");
+        console.log('Tags atualizadas:', tags);
     }
 
     container.addEventListener("click", () => input.focus());
@@ -113,53 +151,94 @@ document.addEventListener("DOMContentLoaded", function () {
                 input.value = "";
             }
         } else if (e.key === "Backspace" && input.value === "") {
-            tags.pop();
-            renderTags();
+            if (tags.length > 0) {
+                tags.pop();
+                renderTags();
+            }
         }
     });
 
     container.addEventListener("click", (e) => {
         if (e.target.tagName === "BUTTON") {
-            const index = e.target.dataset.index;
-            tags.splice(index, 1);
-            renderTags();
+            const index = parseInt(e.target.dataset.index);
+            if (!isNaN(index) && index >= 0 && index < tags.length) {
+                tags.splice(index, 1);
+                renderTags();
+            }
         }
     });
 
-    renderTags();
+    // Form submit
+    const form = document.getElementById("formGuiaLocalIntercambio");
+    if (form) {
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            console.log('Formulário submetido');
 
-    document.getElementById("formGuiaLocalIntercambio").addEventListener("submit", function (e) {
-        e.preventDefault();
+            const loaderGuia = document.getElementById("loadingOverlay");
+            const botaoGuia = document.getElementById("btRelatorioGuiasLocalIntercambio");
+            const msgLoader = document.getElementById("msgLoader");
+            
+            if (msgLoader) msgLoader.innerText = "Gerando relatório de Guias, aguarde por favor...";
+            if (loaderGuia) loaderGuia.style.display = "flex";
+            if (botaoGuia) botaoGuia.disabled = true;
 
-        const loaderGuia = document.getElementById("loadingOverlay");
-        const botaoGuia = document.getElementById("btRelatorioGuiasLocalIntercambio");
-        const msgLoader = document.getElementById("msgLoader");
-        if (msgLoader) msgLoader.innerText = "Gerando relatório de Guias, aguarde por favor...";
-        if (loaderGuia) loaderGuia.style.display = "flex";
-        botaoGuia.disabled = true;
+            const formData = new FormData(this);
 
-        const form = e.target;
-        const formData = new FormData(form);
-
-        fetch(form.action, { method: "POST", body: formData })
-        .then(res => res.json())
-        .then(data => {
-            if (data.success) {
+            fetch(this.action, { 
+                method: "POST", 
+                body: formData 
+            })
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error(`HTTP error! status: ${res.status}`);
+                }
+                return res.json();
+            })
+            .then(data => {
+                console.log('Resposta do servidor:', data);
+                if (data.success) {
+                    if (loaderGuia) loaderGuia.style.display = "none";
+                    if (botaoGuia) botaoGuia.disabled = false;
+                    window.location.href = data.file;
+                } else {
+                    alert(data.error || "Erro ao gerar relatório.");
+                    if (loaderGuia) loaderGuia.style.display = "none";
+                    if (botaoGuia) botaoGuia.disabled = false;
+                }
+            })
+            .catch(err => {
+                console.error("Erro na requisição:", err);
+                alert("Erro ao gerar relatório: " + err.message);
                 if (loaderGuia) loaderGuia.style.display = "none";
-                botaoGuia.disabled = false;
-                window.location.href = data.file;
-            } else {
-                alert(data.error || "Erro ao gerar relatório.");
-                if (loaderGuia) loaderGuia.style.display = "none";
-                botaoGuia.disabled = false;
-            }
-        })
-        .catch(err => {
-            console.error("Erro:", err);
-            alert("Erro ao gerar relatório.");
-            if (loaderGuia) loaderGuia.style.display = "none";
-            botaoGuia.disabled = false;
+                if (botaoGuia) botaoGuia.disabled = false;
+            });
         });
-    });
+    }
+
+    // Renderiza as tags iniciais
+    renderTags();
+    console.log('Script carregado com sucesso');
 });
+
+// Função para carregar Bootstrap dinamicamente se necessário
+function loadBootstrap() {
+    console.log('Carregando Bootstrap dinamicamente...');
+    
+    // Carrega CSS
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css';
+    document.head.appendChild(link);
+    
+    // Carrega JS
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js';
+    script.onload = function() {
+        console.log('Bootstrap carregado dinamicamente');
+        // Recarrega a funcionalidade após Bootstrap carregar
+        setTimeout(() => window.location.reload(), 100);
+    };
+    document.head.appendChild(script);
+}
 </script>

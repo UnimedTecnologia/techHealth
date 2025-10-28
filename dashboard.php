@@ -340,8 +340,13 @@
     }
     ?>
 
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 
-    <!-- //* Modais -->
+      <!-- //* Modais -->
       <?php include_once "modalAutorizacao.php"; ?>
       <?php include_once "modalRelatorioPrestador.php"; ?>
       <?php include_once "modalCorrecaoPrestador.php"; ?>
@@ -363,15 +368,10 @@
       <?php include_once "modalDePara.php"; ?>
       <?php include_once "modalAlterarStatusGuia.php"; ?>
       <?php include_once "modalGuiasLocalIntercambio.php"; ?>
-      
 
-    <!-- Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
     <script src="prestadores.js"></script>
+      
 
     <?php 
         if (isset($_SESSION['adm']) && $_SESSION['adm'] == 'S') { 
